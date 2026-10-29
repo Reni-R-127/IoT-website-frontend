@@ -1,0 +1,94 @@
+/* =========================================
+   COURSES SECTION
+========================================= */
+
+.courses-section {
+  width: 100%;
+
+  margin-top: 95px;
+
+  padding:
+    85px
+    max(18px, calc((100% - 1180px) / 2));
+
+  background: #f8fafc;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   COURSE GRID
+========================================= */
+
+.course-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 17px;
+}
+
+
+/* =========================================
+   CENTER LINK
+========================================= */
+
+.center-link {
+  margin-top: 28px;
+
+  text-align: center;
+}
+
+.center-link a {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  color: #4D96FF;
+
+  text-decoration: none;
+
+  font-size: 15px;
+
+  font-weight: 900;
+
+  transition:
+    transform 0.2s ease;
+}
+
+.center-link a:hover {
+  transform: translateX(3px);
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 950px) {
+
+  .course-grid {
+    grid-template-columns:
+      1fr 1fr;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .courses-section {
+    padding: 65px 14px;
+  }
+
+  .course-grid {
+    grid-template-columns: 1fr;
+  }
+}

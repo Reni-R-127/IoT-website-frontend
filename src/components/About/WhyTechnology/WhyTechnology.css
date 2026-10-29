@@ -1,0 +1,668 @@
+/* =========================================================
+   WHY TECHNOLOGY
+   Desktop: content and image side by side.
+   Tablet/mobile: content first, image floats behind/beside it.
+========================================================= */
+.why-tech-heading {
+  grid-area: heading;
+}
+
+.why-tech-description {
+  grid-area: description;
+}
+
+.why-tech-visual {
+  grid-area: visual;
+  min-width: 0;
+}
+
+.why-tech-skills {
+  grid-area: skills;
+}
+
+.why-tech-button {
+  grid-area: button;
+  justify-self: start;
+}
+
+.why-technology,
+.why-technology * {
+  box-sizing: border-box;
+}
+
+.why-technology {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  overflow: hidden;
+  padding: clamp(32px, 4vw, 48px) 0;
+  background: linear-gradient(135deg, #f7fbff 0%, #fff 50%, #f8faff 100%);
+}
+
+.why-tech-container {
+  position: relative;
+  z-index: 1;
+
+  display: grid;
+  width: min(1360px, calc(100% - 64px));
+
+  grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.04fr);
+
+  grid-template-areas:
+    "heading visual"
+    "description visual"
+    "skills visual"
+    "button visual";
+
+  align-items: center;
+  align-content: center;
+  column-gap: clamp(24px, 3vw, 38px);
+  row-gap: 0;
+
+  margin-inline: auto;
+}
+
+.why-tech-content {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+}
+
+/* Decorative background */
+
+.why-tech-decoration {
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.why-tech-decoration-left {
+  top: -145px;
+  left: -100px;
+  width: 220px;
+  aspect-ratio: 1;
+  background: rgba(72, 174, 244, 0.11);
+}
+
+.why-tech-decoration-right {
+  right: -115px;
+  bottom: -150px;
+  width: 240px;
+  aspect-ratio: 1;
+  background: rgba(140, 110, 255, 0.09);
+}
+
+/* Heading */
+
+.why-tech-heading {
+  width: 100%;
+  text-align: left;
+}
+
+.why-tech-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+  margin: 0 0 14px;
+  color: #1679d7;
+  font-size: clamp(12px, 1.2vw, 16px);
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  line-height: 1.3;
+}
+
+.why-tech-line {
+  display: block;
+  width: clamp(24px, 3vw, 42px);
+  height: 2px;
+  flex: 0 0 auto;
+  border-radius: 10px;
+  background: #a9cdec;
+}
+
+.why-tech-content h2 {
+  width: 100%;
+  max-width: 650px;
+  margin: 0;
+  color: #09245c;
+  font-size: clamp(36px, 4vw, 57px);
+  font-weight: 900;
+  line-height: 1.06;
+  letter-spacing: -0.045em;
+  overflow-wrap: break-word;
+}
+
+.why-tech-description {
+  max-width: 650px;
+  margin: 15px 0 20px;
+  color: #61738e;
+  font-size: clamp(15px, 1.3vw, 18px);
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+/* Skill cards */
+
+.why-tech-skills {
+  display: grid;
+  width: 100%;
+  max-width: 700px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.why-tech-skill {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 60px;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border: 1px solid #d8e6f5;
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 12px rgba(35, 81, 129, 0.04);
+  transition: transform 240ms ease, background-color 240ms ease,
+    border-color 240ms ease, box-shadow 240ms ease;
+}
+
+.why-tech-skill:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(22, 92, 160, 0.13);
+}
+
+.why-tech-skill-icon {
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: transform 220ms ease;
+}
+
+.why-tech-skill:hover .why-tech-skill-icon {
+  transform: scale(1.05);
+}
+
+.why-tech-skill-title {
+  min-width: 0;
+  color: #102d62;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.why-tech-purple .why-tech-skill-icon { color: #9637e8; background: #f2e5ff; }
+.why-tech-purple:hover { border-color: #a855f7; background: #f0e3ff; }
+.why-tech-pink .why-tech-skill-icon { color: #e73583; background: #ffe4f0; }
+.why-tech-pink:hover { border-color: #ed438d; background: #ffe5ef; }
+.why-tech-blue .why-tech-skill-icon { color: #1485d6; background: #e0f2ff; }
+.why-tech-blue:hover { border-color: #168fe0; background: #e0f1ff; }
+.why-tech-green .why-tech-skill-icon { color: #0eae70; background: #e0ffef; }
+.why-tech-green:hover { border-color: #10b981; background: #ddf9e9; }
+.why-tech-yellow .why-tech-skill-icon { color: #df9b00; background: #fff0c5; }
+.why-tech-yellow:hover { border-color: #e8ad0b; background: #fff2ce; }
+.why-tech-cyan .why-tech-skill-icon { color: #1688dc; background: #e2f2ff; }
+.why-tech-cyan:hover { border-color: #279fe5; background: #e2f3ff; }
+
+/* CTA */
+
+.why-tech-button {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 21px;
+  padding: 0 20px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  color: #167bd0;
+  background: linear-gradient(135deg, #eaf6ff, #deefff);
+  box-shadow: 0 7px 18px rgba(40, 135, 220, 0.09);
+  font-size: 16px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 220ms ease, color 220ms ease, box-shadow 220ms ease;
+}
+
+.why-tech-button:hover {
+  transform: translateY(-3px);
+  color: #fff;
+  background: #167bd0;
+  box-shadow: 0 12px 24px rgba(22, 123, 208, 0.25);
+}
+
+.why-tech-button:focus-visible {
+  outline: 3px solid #168fe0;
+  outline-offset: 3px;
+}
+
+/* Desktop image */
+
+.why-tech-visual {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.why-tech-image {
+  display: block;
+  width: 100%;
+  max-width: 730px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 28px rgba(32, 81, 132, 0.08));
+  animation: why-tech-float 5s ease-in-out infinite;
+}
+
+@keyframes why-tech-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Reveal animation */
+
+.why-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+.why-tech-visual.why-reveal {
+  transform: translateX(22px);
+}
+
+.why-technology.is-visible .why-reveal {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.why-tech-button.why-reveal {
+  transition-delay: 450ms;
+}
+
+/* Tablet: content remains first; image sits directly behind/below it,
+   visually floating without pushing the cards or button underneath it. */
+
+@media (max-width: 900px) {
+  .why-technology {
+    padding: 34px 0 28px;
+  }
+
+  .why-tech-container {
+    display: block;
+    width: min(720px, calc(100% - 36px));
+  }
+
+  .why-tech-content {
+    width: 100%;
+    text-align: center;
+  }
+
+  .why-tech-heading {
+    text-align: center;
+  }
+
+  .why-tech-eyebrow {
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 14px;
+  }
+
+  .why-tech-line {
+    width: 28px;
+  }
+
+  .why-tech-content h2 {
+    max-width: 650px;
+    margin-inline: auto;
+    font-size: clamp(34px, 5.4vw, 46px);
+    line-height: 1.08;
+    text-align: center;
+  }
+
+  .why-tech-description {
+    max-width: 620px;
+    margin: 12px auto 18px;
+    font-size: 16px;
+  }
+
+  .why-tech-skills {
+    max-width: 650px;
+    margin-inline: auto;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    text-align: left;
+  }
+
+  .why-tech-button {
+    margin-top: 18px;
+  }
+
+  .why-tech-visual {
+    width: min(100%, 620px);
+    margin: -4px auto -16px;
+    pointer-events: none;
+  }
+
+  .why-tech-image {
+    width: 100%;
+    max-width: 620px;
+  }
+
+  .why-tech-visual.why-reveal {
+    transform: translateY(16px);
+  }
+}
+
+/* Mobile: two-column cards and centered CTA; image remains below the CTA
+   but floats with overlap so it doesn't force a large blank gap. */
+
+@media (max-width: 600px) {
+  .why-technology {
+    padding: 28px 0 20px;
+  }
+
+  .why-tech-container {
+    width: calc(100% - 26px);
+  }
+
+  .why-tech-decoration-left {
+    top: -105px;
+    left: -75px;
+    width: 150px;
+  }
+
+  .why-tech-decoration-right {
+    right: -80px;
+    bottom: -100px;
+    width: 160px;
+  }
+
+  .why-tech-eyebrow {
+    gap: 9px;
+    margin-bottom: 12px;
+    font-size: 12px;
+    letter-spacing: 0.13em;
+  }
+
+  .why-tech-line {
+    width: 23px;
+  }
+
+  .why-tech-content h2 {
+    font-size: clamp(30px, 7.8vw, 38px);
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+  }
+
+  .why-tech-desktop-break {
+    display: none;
+  }
+
+  .why-tech-description {
+    max-width: 450px;
+    margin: 11px auto 16px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .why-tech-skills {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .why-tech-skill {
+    min-height: 54px;
+    gap: 7px;
+    padding: 7px 8px;
+    border-radius: 12px;
+  }
+
+  .why-tech-skill-icon {
+    width: 31px;
+    height: 31px;
+    flex-basis: 31px;
+  }
+
+  .why-tech-skill-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .why-tech-skill-title {
+    font-size: 12px;
+    line-height: 1.25;
+  }
+
+  .why-tech-button {
+    min-height: 46px;
+    margin-top: 16px;
+    padding-inline: 17px;
+    font-size: 15px;
+  }
+
+  .why-tech-visual {
+    width: calc(100% + 14px);
+    max-width: 520px;
+    margin: -3px auto -12px;
+    transform-origin: center top;
+  }
+
+  .why-tech-image {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .why-tech-visual.why-reveal {
+    transform: translateY(12px);
+  }
+}
+
+@media (max-width: 380px) {
+  .why-technology {
+    padding: 24px 0 18px;
+  }
+
+  .why-tech-container {
+    width: calc(100% - 20px);
+  }
+
+  .why-tech-eyebrow {
+    gap: 7px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+
+  .why-tech-line {
+    width: 18px;
+  }
+
+  .why-tech-content h2 {
+    font-size: clamp(28px, 8vw, 32px);
+  }
+
+  .why-tech-description {
+    font-size: 13px;
+  }
+
+  .why-tech-skills {
+    gap: 7px;
+  }
+
+  .why-tech-skill {
+    min-height: 50px;
+    gap: 6px;
+    padding: 6px 7px;
+  }
+
+  .why-tech-skill-icon {
+    width: 28px;
+    height: 28px;
+    flex-basis: 28px;
+  }
+
+  .why-tech-skill-icon svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .why-tech-skill-title {
+    font-size: 11px;
+  }
+
+  .why-tech-visual {
+    width: calc(100% + 8px);
+    margin-top: 0;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .why-reveal,
+  .why-tech-skill,
+  .why-tech-skill-icon,
+  .why-tech-button,
+  .why-tech-image {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    animation: none;
+  }
+
+  .why-tech-skill:hover,
+  .why-tech-button:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .why-technology {
+    padding: 34px 0 28px;
+  }
+
+  .why-tech-container {
+    display: grid;
+    width: min(720px, calc(100% - 36px));
+
+    grid-template-columns: minmax(0, 1fr);
+
+    grid-template-areas:
+      "heading"
+      "description"
+      "visual"
+      "skills"
+      "button";
+
+    row-gap: 0;
+    column-gap: 0;
+  }
+
+  .why-tech-heading {
+    text-align: center;
+  }
+
+  .why-tech-eyebrow {
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 14px;
+  }
+
+  .why-tech-line {
+    width: 28px;
+  }
+
+  .why-tech-content h2 {
+    max-width: 650px;
+    margin-inline: auto;
+    font-size: clamp(34px, 5.4vw, 46px);
+    line-height: 1.08;
+    text-align: center;
+  }
+
+  .why-tech-description {
+    max-width: 620px;
+    margin: 12px auto 0;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .why-tech-visual {
+    width: min(100%, 620px);
+    margin: 8px auto 12px;
+    pointer-events: none;
+  }
+
+  .why-tech-image {
+    display: block;
+    width: 100%;
+    max-width: 620px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .why-tech-skills {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    text-align: left;
+  }
+
+  .why-tech-button {
+    justify-self: center;
+    margin-top: 20px;
+  }
+
+  .why-tech-visual.why-reveal {
+    transform: translateY(16px);
+  }
+}
+
+@media (max-width: 600px) {
+  .why-tech-container {
+    width: calc(100% - 26px);
+
+    grid-template-areas:
+      "heading"
+      "description"
+      "visual"
+      "skills"
+      "button";
+  }
+
+  .why-tech-visual {
+    width: 100%;
+    max-width: 520px;
+    margin: 8px auto 12px;
+  }
+
+  .why-tech-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+  }
+
+  .why-tech-skills {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .why-tech-button {
+    justify-self: center;
+    margin-top: 16px;
+  }
+}

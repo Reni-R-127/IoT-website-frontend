@@ -1,0 +1,48 @@
+/* =========================================
+   PROJECTS SECTION
+========================================= */
+
+.projects-section {
+  width: min(1180px, calc(100% - 36px));
+
+  margin: 95px auto 0;
+}
+
+
+/* =========================================
+   PROJECT GRID
+========================================= */
+
+.project-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 13px;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 950px) {
+
+  .project-grid {
+    grid-template-columns:
+      1fr 1fr;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,821 @@
+/* =========================================
+   WHY LEARN SECTION
+========================================= */
+
+.why-learn {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  padding: 32px 0 40px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 18% 20%, rgba(211, 235, 255, 0.65), transparent 36%),
+    radial-gradient(ellipse at 80% 18%, rgba(255, 235, 202, 0.48), transparent 34%),
+    linear-gradient(120deg, #f7fbff, #ffffff 52%, #fcf7ff);
+  box-sizing: border-box;
+}
+
+.why-learn *,
+.why-learn *::before,
+.why-learn *::after {
+  box-sizing: border-box;
+}
+
+.why-learn-container {
+  width: min(1460px, calc(100% - 72px));
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Decorations */
+
+.why-learn-decoration {
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.why-learn-decoration-left {
+  width: 240px;
+  height: 240px;
+  left: -175px;
+  top: 145px;
+  background: rgba(74, 207, 238, 0.17);
+}
+
+.why-learn-decoration-right {
+  width: 240px;
+  height: 240px;
+  right: -160px;
+  top: -145px;
+  background: rgba(182, 130, 255, 0.17);
+}
+
+.why-learn-dots {
+  position: absolute;
+  width: 48px;
+  height: 65px;
+  pointer-events: none;
+  opacity: 0.65;
+  background-image: radial-gradient(#9fb8d9 2px, transparent 2.5px);
+  background-size: 16px 16px;
+}
+
+.why-learn-dots-left {
+  top: 60px;
+  left: 34px;
+}
+
+.why-learn-dots-right {
+  top: 155px;
+  right: 32px;
+}
+
+/* Heading */
+
+.why-learn-heading {
+  max-width: 1100px;
+  margin: 0 auto 24px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.why-learn-visible .why-learn-heading {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.why-learn-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 14px;
+  color: #1685e8;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+}
+
+.why-learn-eyebrow > span:first-child,
+.why-learn-eyebrow > span:last-child {
+  width: 45px;
+  height: 2px;
+  flex-shrink: 0;
+  background: #5aa2f6;
+}
+
+.why-learn-heading h2 {
+  margin: 0;
+  color: #10234a;
+  font-size: clamp(38px, 4.2vw, 60px);
+  font-weight: 900;
+  line-height: 1.04;
+  letter-spacing: -0.05em;
+}
+
+.why-learn-heading h2 strong {
+  color: #1687ec;
+}
+
+.why-learn-heading > p {
+  margin: 10px auto 0;
+  max-width: 1000px;
+  color: #6c7c96;
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+/* Card layout and connecting arrow */
+
+.why-learn-cards-wrap {
+  position: relative;
+  padding-top: 50px;
+}
+
+.why-learn-connection {
+  position: absolute;
+  z-index: 0;
+  top: -25px;
+  left: 2%;
+  width: 96%;
+  height: 150px;
+  pointer-events: none;
+}
+
+.why-learn-connection svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.why-learn-line-track,
+.why-learn-line-draw {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.why-learn-line-track {
+  stroke: rgba(49, 149, 243, 0.18);
+  stroke-width: 2;
+  stroke-dasharray: 5 8;
+}
+
+.why-learn-line-draw {
+  stroke: #3195f3;
+  stroke-width: 2.5;
+  stroke-dasharray: 1600;
+  stroke-dashoffset: 1600;
+}
+
+.why-learn-flying-arrow {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1688ed;
+  opacity: 0;
+}
+
+.why-learn-visible .why-learn-line-draw {
+  animation: whyLearnDraw 2.5s ease-out 0.2s forwards;
+}
+
+.why-learn-visible .why-learn-flying-arrow {
+  animation: whyLearnFly 2.5s ease-in-out 0.2s forwards;
+}
+
+.why-learn-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 22px;
+}
+
+/* Cards */
+
+.why-learn-card {
+  --card-color: #1689ed;
+  --card-hover: #edf6ff;
+
+  position: relative;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(24px);
+  animation: none;
+}
+
+.why-learn-pink {
+  --card-color: #d94bb5;
+  --card-hover: #fff0fa;
+}
+
+.why-learn-green {
+  --card-color: #12ad9b;
+  --card-hover: #e8fff8;
+}
+
+.why-learn-purple {
+  --card-color: #8551e8;
+  --card-hover: #f2ecff;
+}
+
+.why-learn-visible .why-learn-card {
+  animation:
+    whyLearnCardReveal 0.65s ease-out var(--card-delay) forwards,
+    whyLearnCardFloat 5s ease-in-out calc(3s + var(--float-delay)) infinite;
+}
+
+/* Illustration floats ABOVE the text card */
+
+.why-learn-image-stage {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 190px;
+  flex-shrink: 0;
+  margin-bottom: -43px;
+  padding: 0 14px;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.why-learn-image-circle {
+  position: absolute;
+  z-index: 0;
+  width: min(205px, 88%);
+  height: 145px;
+  border-radius: 50%;
+  background: rgba(100, 187, 255, 0.17);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.why-learn-pink .why-learn-image-circle {
+  background: rgba(239, 126, 210, 0.18);
+}
+
+.why-learn-green .why-learn-image-circle {
+  background: rgba(67, 215, 192, 0.18);
+}
+
+.why-learn-purple .why-learn-image-circle {
+  background: rgba(174, 139, 255, 0.2);
+}
+
+.why-learn-image {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  max-width: 255px;
+  height: 175px;
+  object-fit: contain;
+  object-position: center;
+  opacity: 0;
+  transform: translateY(12px) scale(0.94);
+}
+
+.why-learn-visible .why-learn-image {
+  animation:
+    whyLearnImageReveal 0.6s ease-out calc(0.4s + var(--card-delay)) forwards,
+    whyLearnImageFloat 4.2s ease-in-out calc(3s + var(--float-delay)) infinite;
+}
+
+/* White text panel */
+
+.why-learn-card-content {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  min-height: 185px;
+  padding: 60px 20px 22px;
+  text-align: center;
+  border: 1.5px solid rgba(218, 232, 251, 0.55);
+  border-radius: 29px;
+  background: rgba(255, 255, 255, 0.83);
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.why-learn-card-content h3 {
+  margin: 0 0 7px;
+  color: #13264c;
+  font-size: clamp(18px, 1.45vw, 23px);
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+}
+
+.why-learn-card-content p {
+  max-width: 290px;
+  margin: 0 auto;
+  color: #75839b;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.why-learn-card-link {
+  display: none;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  margin: 12px auto 0;
+  color: #ffffff;
+  background: var(--card-color);
+  border: 1px solid var(--card-color);
+  border-radius: 50%;
+}
+
+/* Darker border and shadow on hover */
+
+.why-learn-card:hover .why-learn-card-content,
+.why-learn-card:focus-within .why-learn-card-content {
+  border-color: var(--card-color);
+  background: var(--card-hover);
+  box-shadow: 0 12px 25px rgba(31, 65, 112, 0.14);
+  transform: translateY(-4px);
+}
+
+.why-learn-card:hover .why-learn-image-circle {
+  transform: scale(1.06);
+}
+
+.why-learn-blue:hover .why-learn-image-circle {
+  background: rgba(70, 160, 245, 0.24);
+}
+
+.why-learn-pink:hover .why-learn-image-circle {
+  background: rgba(232, 91, 190, 0.24);
+}
+
+.why-learn-green:hover .why-learn-image-circle {
+  background: rgba(36, 194, 165, 0.24);
+}
+
+.why-learn-purple:hover .why-learn-image-circle {
+  background: rgba(144, 96, 239, 0.25);
+}
+
+/* Animations */
+
+@keyframes whyLearnDraw {
+  0% {
+    stroke-dashoffset: 1600;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes whyLearnFly {
+  0% {
+    left: 1%;
+    top: 43%;
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(-15deg);
+  }
+  8% {
+    opacity: 1;
+  }
+  25% {
+    left: 25%;
+    top: 16%;
+    transform: translate(-50%, -50%) rotate(12deg);
+  }
+  50% {
+    left: 50%;
+    top: 65%;
+    transform: translate(-50%, -50%) rotate(-8deg);
+  }
+  75% {
+    left: 75%;
+    top: 20%;
+    transform: translate(-50%, -50%) rotate(12deg);
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    left: 98%;
+    top: 43%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes whyLearnCardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes whyLearnCardFloat {
+  0%, 100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -5px;
+  }
+}
+
+@keyframes whyLearnImageReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes whyLearnImageFloat {
+  0%, 100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -6px;
+  }
+}
+
+/* Laptop */
+
+@media (max-width: 1100px) {
+  .why-learn-container {
+    width: calc(100% - 48px);
+  }
+
+  .why-learn-grid {
+    gap: 16px;
+  }
+
+  .why-learn-image-stage {
+    height: 170px;
+    margin-bottom: -36px;
+  }
+
+  .why-learn-image {
+    height: 155px;
+  }
+
+  .why-learn-card-content {
+    min-height: 180px;
+    padding: 52px 13px 20px;
+  }
+
+  .why-learn-card-content h3 {
+    font-size: 19px;
+  }
+
+  .why-learn-card-content p {
+    font-size: 16px;
+  }
+}
+
+/* Tablet */
+
+@media (max-width: 850px) {
+  .why-learn {
+    padding: 30px 0 34px;
+  }
+
+  .why-learn-container {
+    width: calc(100% - 36px);
+  }
+
+  .why-learn-heading h2 {
+    font-size: clamp(34px, 5.2vw, 47px);
+  }
+
+  .why-learn-heading > p {
+    font-size: 18px;
+  }
+
+  .why-learn-cards-wrap {
+    padding-top: 25px;
+  }
+
+  .why-learn-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 26px 20px;
+  }
+
+  .why-learn-connection {
+    top: -30px;
+    opacity: 0.45;
+  }
+
+  .why-learn-image-stage {
+    height: 180px;
+    margin-bottom: -38px;
+  }
+
+  .why-learn-image {
+    max-width: 250px;
+    height: 165px;
+  }
+
+  .why-learn-card-content {
+    min-height: 165px;
+    padding: 54px 18px 22px;
+  }
+
+  .why-learn-card-content h3 {
+    font-size: 21px;
+  }
+
+  .why-learn-card-content p {
+    font-size: 17px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 560px) {
+  .why-learn {
+    padding: 27px 0 30px;
+  }
+
+  .why-learn-container {
+    width: calc(100% - 30px);
+  }
+
+  .why-learn-heading {
+    margin-bottom: 15px;
+  }
+
+  .why-learn-eyebrow {
+    gap: 9px;
+    margin-bottom: 12px;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+  }
+
+  .why-learn-eyebrow > span:first-child,
+  .why-learn-eyebrow > span:last-child {
+    width: 25px;
+  }
+
+  .why-learn-heading h2 {
+    font-size: clamp(29px, 8vw, 39px);
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+  }
+
+  .why-learn-heading > p {
+    margin-top: 12px;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .why-learn-cards-wrap {
+    padding-top: 10px;
+  }
+
+  .why-learn-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .why-learn-connection {
+    display: none;
+  }
+
+  .why-learn-card {
+    max-width: 420px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .why-learn-image-stage {
+    height: 180px;
+    margin-bottom: -38px;
+    padding: 0 16px;
+  }
+
+  .why-learn-image-circle {
+    width: 190px;
+    height: 140px;
+  }
+
+  .why-learn-image {
+    max-width: 245px;
+    height: 165px;
+  }
+
+  .why-learn-card-content {
+    min-height: 155px;
+    padding: 53px 22px 23px;
+    border-radius: 24px;
+  }
+
+  .why-learn-card-content h3 {
+    font-size: 21px;
+  }
+
+  .why-learn-card-content p {
+    max-width: 340px;
+    font-size: 17px;
+    line-height: 1.5;
+  }
+
+  .why-learn-card-link {
+    display: flex;
+  }
+
+  .why-learn-dots-left {
+    left: 8px;
+  }
+
+  .why-learn-dots-right {
+    right: 8px;
+  }
+}
+
+/* Reduced motion accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .why-learn *,
+  .why-learn *::before,
+  .why-learn *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .why-learn-heading,
+  .why-learn-card,
+  .why-learn-image {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Connecting path behind the illustrations */
+.why-learn-connection {
+  position: absolute;
+  z-index: 0;
+  top: -25px;
+  left: 2%;
+  width: 96%;
+  height: 150px;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.why-learn-connection-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.why-learn-line-track,
+.why-learn-line-draw {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.why-learn-line-track {
+  stroke: rgba(49, 149, 243, 0.18);
+  stroke-width: 2;
+  stroke-dasharray: 4 8;
+}
+
+.why-learn-line-draw {
+  stroke: #3195f3;
+  stroke-width: 2.5;
+  stroke-dasharray: 1600;
+  stroke-dashoffset: 1600;
+}
+
+/* Paper aeroplane */
+.why-learn-flying-arrow {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: #1688ed;
+  opacity: 0;
+  filter: drop-shadow(0 2px 3px rgba(22, 136, 237, 0.18));
+}
+
+/* Draw the path and fly the plane once when revealed */
+.why-learn-visible .why-learn-line-draw {
+  animation: whyLearnDraw 2.6s ease-out 0.15s forwards;
+}
+
+.why-learn-visible .why-learn-flying-arrow {
+  animation: whyLearnFly 2.6s ease-in-out 0.15s forwards;
+}
+
+@keyframes whyLearnDraw {
+  0% {
+    stroke-dashoffset: 1600;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes whyLearnFly {
+  0% {
+    left: 1%;
+    top: 40%;
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(-35deg);
+  }
+
+  8% {
+    opacity: 1;
+  }
+
+  25% {
+    left: 25%;
+    top: 15%;
+    transform: translate(-50%, -50%) rotate(20deg);
+  }
+
+  50% {
+    left: 50%;
+    top: 65%;
+    transform: translate(-50%, -50%) rotate(-20deg);
+  }
+
+  75% {
+    left: 75%;
+    top: 20%;
+    transform: translate(-50%, -50%) rotate(20deg);
+  }
+
+  92% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 98%;
+    top: 40%;
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+@media (max-width: 560px) {
+  .why-learn-connection {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .why-learn-visible .why-learn-line-draw,
+  .why-learn-visible .why-learn-flying-arrow {
+    animation: none;
+  }
+
+  .why-learn-line-draw {
+    stroke-dashoffset: 0;
+  }
+}

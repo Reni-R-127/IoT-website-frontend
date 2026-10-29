@@ -1,0 +1,56 @@
+/* =========================================
+   BASE REVEAL
+========================================= */
+
+.home-reveal {
+  opacity: 0;
+  transition:
+    opacity var(--reveal-duration, 650ms) ease,
+    transform var(--reveal-duration, 650ms)
+      cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: 0ms;
+  will-change: opacity, transform;
+}
+
+.home-reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+/* =========================================
+   REVEAL DIRECTIONS
+========================================= */
+
+.home-reveal-up {
+  transform: translate3d(0, 30px, 0);
+}
+
+.home-reveal-down {
+  transform: translate3d(0, -30px, 0);
+}
+
+.home-reveal-left {
+  transform: translate3d(30px, 0, 0);
+}
+
+.home-reveal-right {
+  transform: translate3d(-30px, 0, 0);
+}
+
+.home-reveal-zoom {
+  transform: translate3d(0, 0, 0) scale(0.92);
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .home-reveal,
+  .home-reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

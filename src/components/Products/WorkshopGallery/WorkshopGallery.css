@@ -1,0 +1,276 @@
+.workshop-gallery {
+  padding-top: 40px;
+  padding-bottom: 55px;
+}
+.gallery-filter-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 24px 0;
+}
+.gallery-filter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 17px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: #e9f4ff;
+  color: #0757bb;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    background 0.2s;
+}
+.gallery-filter:hover {
+  transform: translateY(-2px);
+}
+.gallery-filter.active {
+  color: #fff;
+  background: #0878f5;
+  box-shadow: 0 7px 18px #0878f82b;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+.gallery-photo {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1.5;
+  margin: 0;
+  border: 3px solid #fff;
+  border-radius: 16px;
+  background: #e9f2fc;
+  box-shadow: 0 8px 20px #164f8810;
+}
+.gallery-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s;
+}
+.gallery-photo:hover img {
+  transform: scale(1.06);
+}
+.gallery-photo-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #073b7a00;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+.gallery-photo-overlay svg {
+  display: grid;
+  box-sizing: content-box;
+  padding: 13px;
+  border: 1px solid #ffffff70;
+  border-radius: 50%;
+  background: #0b4d8c88;
+}
+.gallery-photo:hover .gallery-photo-overlay {
+  background: #073b7a30;
+  opacity: 1;
+}
+.gallery-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 17px;
+  margin-top: 24px;
+}
+.gallery-dots {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.gallery-dots button {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 99px;
+  background: #c7d9f0;
+  cursor: pointer;
+  transition:
+    width 0.2s,
+    background 0.2s;
+}
+.gallery-dots button.active {
+  width: 21px;
+  background: #0878f5;
+}
+.gallery-bottom .products-btn {
+  min-height: 48px;
+  border-radius: 999px;
+  padding-inline: 24px;
+}
+@media (max-width: 950px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 650px) {
+  .workshop-gallery {
+    padding-top: 28px;
+    padding-bottom: 36px;
+  }
+  .gallery-filter-row {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin: 18px -4px;
+    padding: 3px 4px 8px;
+  }
+  .gallery-filter {
+    flex: 0 0 auto;
+    min-height: 40px;
+    padding: 0 13px;
+  }
+  .gallery-grid {
+    gap: 9px;
+  }
+  .gallery-photo {
+    aspect-ratio: 1.25;
+    border-width: 2px;
+    border-radius: 12px;
+  }
+  .gallery-bottom {
+    margin-top: 18px;
+  }
+  .gallery-bottom .products-btn {
+    width: 100%;
+    max-width: 340px;
+  }
+}
+
+/*
+ * WorkshopGallery heading standardization
+ * Append this patch to the END of WorkshopGallery.css.
+ * Only the section heading styles are adjusted; filters, gallery images, dots, and CTA remain unchanged.
+ */
+
+.workshop-gallery .products-section-heading {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 34px;
+  padding: 0 12px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.workshop-gallery .products-section-heading .section-kicker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 14px;
+  color: #1679d7;
+  font-size: 19px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.workshop-gallery .products-section-heading .section-kicker i {
+  display: block;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 2px;
+  background: #a9cdec;
+}
+
+.workshop-gallery .products-section-heading h2 {
+  max-width: 1000px;
+  margin: 0 auto;
+  color: #09245c;
+  font-size: clamp(38px, 4vw, 57px);
+  font-weight: 900;
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+  overflow-wrap: break-word;
+}
+
+.workshop-gallery .products-section-heading h2 em {
+  color: #1599df;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.workshop-gallery .products-section-heading > p {
+  max-width: 850px;
+  margin: 18px auto 0;
+  color: #66758f;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+@media (max-width: 900px) {
+  .workshop-gallery .products-section-heading .section-kicker {
+    gap: 14px;
+    font-size: 17px;
+  }
+
+  .workshop-gallery .products-section-heading h2 {
+    font-size: clamp(36px, 5.5vw, 50px);
+  }
+
+  .workshop-gallery .products-section-heading > p {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 650px) {
+  .workshop-gallery .products-section-heading {
+    margin-bottom: 28px;
+    padding: 0 3px;
+  }
+
+  .workshop-gallery .products-section-heading .section-kicker {
+    gap: 9px;
+    margin-bottom: 13px;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+  }
+
+  .workshop-gallery .products-section-heading .section-kicker i {
+    flex-basis: 25px;
+    width: 25px;
+  }
+
+  .workshop-gallery .products-section-heading h2 {
+    margin: 0 auto;
+    font-size: clamp(32px, 8vw, 43px);
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+  }
+
+  .workshop-gallery .products-section-heading > p {
+    margin-top: 15px;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 360px) {
+  .workshop-gallery .products-section-heading .section-kicker {
+    gap: 7px;
+    font-size: 11px;
+  }
+
+  .workshop-gallery .products-section-heading .section-kicker i {
+    flex-basis: 20px;
+    width: 20px;
+  }
+}

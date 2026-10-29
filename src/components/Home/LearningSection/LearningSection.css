@@ -1,0 +1,745 @@
+/* =========================================
+   LEARNING SECTION
+========================================= */
+
+.learning-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: clamp(55px, 6vw, 80px) 0 clamp(30px, 4vw, 45px);
+  background: #ffffff;
+}
+
+.learning-section::before,
+.learning-section::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.learning-section::before {
+  width: 280px;
+  height: 280px;
+  left: -150px;
+  top: -145px;
+  background: #dceeff;
+  opacity: 0.9;
+}
+
+.learning-section::after {
+  width: 300px;
+  height: 300px;
+  right: -160px;
+  bottom: -155px;
+  background: #eee5ff;
+  opacity: 0.9;
+}
+
+/* =========================================
+   DECORATIVE CHARACTER IMAGES
+========================================= */
+
+.learning-section-image {
+  position: absolute;
+  top: clamp(20px, 3vw, 35px);
+  width: clamp(170px, 18vw, 270px);
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+  mix-blend-mode: multiply;
+  filter: contrast(1.08) saturate(1.08);
+  opacity: 0.98;
+  animation: characterEntrance 1s ease both, characterFloat 4s ease-in-out 1.2s infinite;
+  transition: width 0.3s ease, top 0.3s ease, transform 0.4s ease;
+}
+
+.learning-section-image-left {
+  left: 0;
+}
+
+.learning-section-image-right {
+  right: 0;
+}
+
+/* =========================================
+   SECTION HEADING
+   Matches the WHAT WE TEACH reference
+========================================= */
+
+.learning-header {
+  position: relative;
+  z-index: 3;
+  width: min(1000px, calc(100% - 40px));
+  margin: 0 auto clamp(22px, 3vw, 32px);
+  text-align: center;
+  animation: learningHeaderReveal 0.9s ease 0.15s both;
+}
+
+.learning-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: 0 0 14px;
+  color: #1679d7;
+  font-size: 19px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+  animation: learningEyebrowReference 0.7s ease 0.25s both;
+}
+
+.learning-eyebrow-line {
+  display: block;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 2px;
+  border-radius: 10px;
+  background: #a9cdec;
+}
+
+.learning-header h2 {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  color: #09245c;
+  font-size: clamp(38px, 4vw, 57px);
+  font-weight: 900;
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+.learning-header h2 span {
+  color: #1599df;
+  font-weight: 900;
+}
+
+.learning-header p {
+  width: min(760px, 100%);
+  margin: clamp(10px, 1.2vw, 14px) auto 0;
+  color: #61708b;
+  font-size: clamp(13px, 1.2vw, 16px);
+  line-height: 1.5;
+}
+
+/* =========================================
+   LEARNING CARDS GRID
+========================================= */
+
+.learning-cards {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 28px);
+  width: min(1320px, calc(100% - 70px));
+  margin: 0 auto;
+}
+
+.learning-card {
+  position: relative;
+  min-width: 0;
+  min-height: clamp(270px, 25vw, 320px);
+  padding: clamp(18px, 2vw, 24px);
+  overflow: hidden;
+  border: 1px solid rgba(50, 150, 230, 0.2);
+  border-radius: clamp(18px, 2vw, 24px);
+  animation: cardReveal 0.7s ease both;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  will-change: transform;
+}
+
+.learning-card:nth-child(1) { animation-delay: 0.25s; }
+.learning-card:nth-child(2) { animation-delay: 0.4s; }
+.learning-card:nth-child(3) { animation-delay: 0.55s; }
+.learning-card:nth-child(4) { animation-delay: 0.7s; }
+
+.learning-card:hover {
+  transform: translateY(-9px) scale(1.015);
+  box-shadow: 0 20px 40px rgba(31, 104, 180, 0.16);
+}
+
+/* Card colors */
+
+.learn-card {
+  background: #eef8ff;
+  border-color: #b9e3ff;
+}
+
+.explore-card {
+  background: #fff9ed;
+  border-color: #f5d99b;
+}
+
+.build-card {
+  background: #ecfbf7;
+  border-color: #a9e6d5;
+}
+
+.create-card {
+  background: #f5f0ff;
+  border-color: #d5c2ff;
+}
+
+/* Card number */
+
+.learning-number {
+  position: absolute;
+  top: clamp(14px, 1.5vw, 18px);
+  left: clamp(14px, 1.5vw, 20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(45px, 4vw, 54px);
+  height: clamp(45px, 4vw, 54px);
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: clamp(15px, 1.5vw, 18px);
+  font-weight: 900;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.learn-card .learning-number,
+.learn-card .learning-arrow {
+  background: #1684df;
+}
+
+.explore-card .learning-number,
+.explore-card .learning-arrow {
+  background: #f7b52c;
+}
+
+.build-card .learning-number,
+.build-card .learning-arrow {
+  background: #18b68a;
+}
+
+.create-card .learning-number,
+.create-card .learning-arrow {
+  background: #7650e8;
+}
+
+.learning-card:hover .learning-number {
+  transform: scale(1.08) rotate(-4deg);
+  box-shadow: 0 7px 15px rgba(0, 0, 0, 0.12);
+}
+
+/* Card illustration */
+
+.learning-illustration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: clamp(125px, 12vw, 145px);
+  margin: 10px 0 8px;
+  overflow: hidden;
+}
+
+.learning-illustration img {
+  display: block;
+  width: clamp(110px, 11vw, 150px);
+  height: clamp(105px, 11vw, 140px);
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  opacity: 0.96;
+  filter: contrast(1.08) saturate(1.05);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), filter 0.35s ease;
+}
+
+.learning-card:hover .learning-illustration img {
+  transform: translateY(-5px) scale(1.08);
+}
+
+/* Card text */
+
+.learning-card-content {
+  position: relative;
+  z-index: 2;
+}
+
+.learning-card-content h3 {
+  margin: 8px 0 6px;
+  color: #07194b;
+  font-size: clamp(19px, 1.8vw, 24px);
+  line-height: 1.15;
+  font-weight: 900;
+  transition: transform 0.3s ease;
+}
+
+.learning-card:hover .learning-card-content h3 {
+  transform: translateX(3px);
+}
+
+.learning-card-content p {
+  max-width: calc(100% - 10px);
+  margin: 0;
+  color: #61708b;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* Optional arrow styling, retained for compatibility */
+
+.learning-arrow {
+  position: absolute;
+  right: clamp(14px, 1.5vw, 20px);
+  bottom: clamp(14px, 1.5vw, 20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(38px, 3.5vw, 46px);
+  height: clamp(38px, 3.5vw, 46px);
+  border-radius: 50%;
+  color: #ffffff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.learning-card:hover .learning-arrow {
+  transform: translateX(5px);
+  box-shadow: 0 7px 15px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================================
+   COURSES CTA
+========================================= */
+
+.learning-cta {
+  position: relative;
+  z-index: 4;
+  width: min(500px, calc(100% - 40px));
+  margin: clamp(20px, 2.5vw, 28px) auto 0;
+  padding: clamp(15px, 1.5vw, 20px) clamp(20px, 2.5vw, 28px);
+  border-radius: 45px;
+  background: #dff2ff;
+  text-align: center;
+  animation: ctaReveal 0.8s ease 0.9s both;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.learning-cta-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #07194b;
+  font-size: clamp(15px, 1.4vw, 18px);
+  font-weight: 900;
+}
+
+.learning-cta-title svg {
+  flex-shrink: 0;
+  color: #61a928;
+}
+
+.learning-cta-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: min(270px, 100%);
+  margin: 12px auto 0;
+  padding: 11px 20px;
+  border-radius: 30px;
+  color: #ffffff;
+  background: #1684df;
+  text-decoration: none;
+  font-size: clamp(13px, 1.2vw, 15px);
+  font-weight: 800;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.learning-cta-button:hover {
+  transform: translateY(-3px);
+  background: #0d73c7;
+  box-shadow: 0 10px 22px rgba(22, 132, 223, 0.25);
+}
+
+.learning-cta:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(22, 132, 223, 0.12);
+}
+
+/* =========================================
+   RESPONSIVE LAYOUT
+========================================= */
+
+@media (max-width: 1100px) {
+  .learning-section-image {
+    width: 190px;
+  }
+
+  .learning-cards {
+    width: calc(100% - 40px);
+    gap: 16px;
+  }
+
+  .learning-card {
+    min-height: 285px;
+  }
+}
+
+@media (max-width: 850px) {
+  .learning-section {
+    padding-top: 75px;
+  }
+
+  .learning-section-image {
+    width: 155px;
+    opacity: 0.85;
+  }
+
+  .learning-header {
+    width: calc(100% - 32px);
+  }
+
+  .learning-header h2 {
+    font-size: clamp(34px, 5vw, 42px);
+  }
+
+  .learning-eyebrow {
+    gap: 14px;
+    font-size: 16px;
+  }
+
+  .learning-eyebrow-line {
+    flex-basis: 36px;
+    width: 36px;
+  }
+
+  .learning-cards {
+    width: calc(100% - 32px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .learning-card {
+    min-height: 275px;
+  }
+}
+
+@media (max-width: 550px) {
+  .learning-section {
+    padding-top: 65px;
+    padding-bottom: 30px;
+  }
+
+  .learning-section-image {
+    top: 18px;
+    width: 110px;
+    opacity: 0.7;
+  }
+
+  .learning-section-image-left {
+    left: -12px;
+  }
+
+  .learning-section-image-right {
+    right: -12px;
+  }
+
+  .learning-header {
+    width: calc(100% - 28px);
+    margin-bottom: 22px;
+  }
+
+  .learning-eyebrow {
+    gap: 10px;
+    margin-bottom: 14px;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+  }
+
+  .learning-eyebrow-line {
+    flex-basis: 25px;
+    width: 25px;
+  }
+
+  .learning-header h2 {
+    font-size: clamp(30px, 7.8vw, 38px);
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+  }
+
+  .learning-header p {
+    padding: 0;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .learning-cards {
+    width: calc(100% - 28px);
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .learning-card {
+    min-height: 265px;
+    padding: 18px;
+  }
+
+  .learning-illustration {
+    height: 125px;
+  }
+
+  .learning-illustration img {
+    width: 125px;
+    height: 115px;
+  }
+
+  .learning-card-content h3 {
+    font-size: 21px;
+  }
+
+  .learning-card-content p {
+    font-size: 13px;
+  }
+
+  .learning-cta {
+    width: calc(100% - 28px);
+    border-radius: 30px;
+  }
+}
+
+@media (max-width: 380px) {
+  .learning-section-image {
+    width: 85px;
+    opacity: 0.5;
+  }
+
+  .learning-eyebrow {
+    gap: 7px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+
+  .learning-eyebrow-line {
+    flex-basis: 18px;
+    width: 18px;
+  }
+
+  .learning-header h2 {
+    font-size: 29px;
+    line-height: 1.1;
+  }
+
+  .learning-card {
+    min-height: 250px;
+  }
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+.learning-section {
+  animation: learningSectionReveal 0.8s ease both;
+}
+
+@keyframes learningSectionReveal {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes learningHeaderReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes learningEyebrowReference {
+  from {
+    opacity: 0;
+    letter-spacing: 0.3em;
+  }
+
+  to {
+    opacity: 1;
+    letter-spacing: 0.16em;
+  }
+}
+
+@keyframes characterEntrance {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes characterFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(35px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes ctaReveal {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .learning-section,
+  .learning-header,
+  .learning-eyebrow,
+  .learning-section-image,
+  .learning-card,
+  .learning-cta {
+    animation: none;
+  }
+
+  .learning-card,
+  .learning-card:hover,
+  .learning-illustration img,
+  .learning-card:hover .learning-illustration img,
+  .learning-number,
+  .learning-arrow,
+  .learning-cta,
+  .learning-cta-button {
+    transition: none;
+    transform: none;
+  }
+
+  .learning-eyebrow {
+    letter-spacing: 0.16em;
+  }
+}
+
+/*
+ * LearningSection heading alignment patch.
+ * Append this to the END of LearningSection.css; do not replace the existing file.
+ * The existing stylesheet already contains the matching reference styles.
+ */
+
+/* Reference eyebrow: centered text with horizontal rules. */
+.learning-header .learning-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: 0 0 14px;
+  color: #1679d7;
+  font-size: 19px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.learning-header .learning-eyebrow-line {
+  display: block;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 2px;
+  border-radius: 10px;
+  background: #a9cdec;
+}
+
+.learning-header h2 {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  color: #09245c;
+  font-size: clamp(38px, 4vw, 57px);
+  font-weight: 900;
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+.learning-header h2 span {
+  color: #1599df;
+  font-weight: 900;
+}
+
+/* Keep the eyebrow animation from forcing desktop letter spacing on mobile. */
+@media (max-width: 550px) {
+  .learning-header .learning-eyebrow {
+    gap: 10px;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    animation-name: learningEyebrowMobileReference;
+  }
+
+  .learning-header .learning-eyebrow-line {
+    flex-basis: 25px;
+    width: 25px;
+  }
+}
+
+@media (max-width: 380px) {
+  .learning-header .learning-eyebrow {
+    gap: 7px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+
+  .learning-header .learning-eyebrow-line {
+    flex-basis: 18px;
+    width: 18px;
+  }
+
+  .learning-header h2 {
+    font-size: 29px;
+    line-height: 1.1;
+  }
+}
+
+@keyframes learningEyebrowMobileReference {
+  from {
+    opacity: 0;
+    letter-spacing: 0.2em;
+  }
+  to {
+    opacity: 1;
+    letter-spacing: 0.12em;
+  }
+}

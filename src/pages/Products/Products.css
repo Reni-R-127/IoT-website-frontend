@@ -1,0 +1,67 @@
+.products-page {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 8% 7%, #e4f8ff 0, transparent 26%),
+    radial-gradient(ellipse at 94% 16%, #f0eaff 0, transparent 23%),
+    linear-gradient(180deg, #f8fbff 0%, #f3f8ff 48%, #f8fbff 100%);
+  color: #10264e;
+}
+.products-page:before,
+.products-page:after {
+  position: absolute;
+  z-index: -1;
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  background: #dff5ff80;
+  content: "";
+  pointer-events: none;
+}
+.products-page:before {
+  top: 700px;
+  left: -145px;
+}
+.products-page:after {
+  top: 2200px;
+  right: -150px;
+  background: #eee5ff70;
+}
+.products-shell {
+  width: min(1500px, calc(100% - 64px));
+  margin-inline: auto;
+}
+.products-page .products-section-heading,
+.products-page .product-filter-row,
+.products-page .project-filter-row,
+.products-page .gallery-filter-row,
+.products-page .testimonial-controls,
+.products-page .testimonial-grid,
+.products-page .testimonial-summary,
+.products-page .gallery-grid,
+.products-page .gallery-bottom,
+.products-page .bulk-top,
+.products-page .bulk-benefits,
+.products-page .bulk-bottom-cta,
+.products-page .products-hero-copy,
+.products-page .products-hero-visual,
+.products-page .products-hero-metrics {
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 760px) {
+  .products-shell {
+    width: calc(100% - 32px);
+  }
+}
+@media (max-width: 400px) {
+  .products-shell {
+    width: calc(100% - 22px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .products-page * {
+    scroll-behavior: auto !important;
+  }
+}

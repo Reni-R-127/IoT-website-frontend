@@ -1,0 +1,1206 @@
+/* =========================================================
+   PARENT SECTION
+========================================================= */
+
+.parent-section {
+  position: relative;
+  overflow: hidden;
+
+  padding: 65px 0 70px;
+
+  background: #ffffff;
+}
+
+/* =========================================================
+   DECORATIVE BACKGROUND
+========================================================= */
+
+.parent-decor {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+.parent-one {
+  width: 280px;
+  height: 250px;
+
+  left: -165px;
+  top: 70px;
+
+  background: #edf7ff;
+}
+
+.parent-two {
+  width: 300px;
+  height: 260px;
+
+  right: -160px;
+  bottom: 40px;
+
+  background: #f3eaff;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.parent-container {
+  position: relative;
+  z-index: 2;
+
+  width: min(1280px, calc(100% - 40px));
+
+  margin: 0 auto;
+}
+
+/* =========================================================
+   MAIN HEADING
+========================================================= */
+
+.parent-heading {
+  margin-bottom: 34px;
+
+  text-align: center;
+}
+
+.parent-heading > span,
+.voices-heading > span {
+  display: inline-block;
+
+  color: #167de5;
+
+  font-size: 16px;
+  font-weight: 900;
+
+  letter-spacing: 0.16em;
+
+  line-height: 1.3;
+}
+
+.parent-heading h2 {
+  margin: 11px 0 14px;
+
+  color: #0d1a40;
+
+  font-size: clamp(42px, 4.2vw, 56px);
+
+  font-weight: 900;
+
+  line-height: 1.08;
+
+  letter-spacing: -0.045em;
+}
+
+.parent-heading h2 strong {
+  color: #167de5;
+}
+
+.parent-heading p {
+  max-width: 850px;
+
+  margin: 0 auto;
+
+  color: #687994;
+
+  font-size: 18px;
+
+  font-weight: 500;
+
+  line-height: 1.65;
+}
+
+/* =========================================================
+   TRUST CARDS
+========================================================= */
+
+.trust-home-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+.trust-home-card {
+  min-height: 245px;
+
+  padding: 28px 22px;
+
+  text-align: center;
+
+  border: 1px solid #dce9f5;
+
+  border-radius: 20px;
+
+  background: #ffffff;
+
+  box-shadow: 0 9px 26px rgba(40, 93, 140, 0.05);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.trust-home-card:hover {
+  transform: translateY(-7px);
+
+  box-shadow: 0 18px 35px rgba(40, 93, 140, 0.1);
+}
+
+/* =========================================================
+   TRUST ICON
+========================================================= */
+
+.trust-icon {
+  width: 68px;
+  height: 68px;
+
+  margin: 0 auto 18px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: #e8f3ff;
+
+  box-shadow: 0 9px 20px rgba(77, 150, 255, 0.12);
+}
+
+.trust-icon svg {
+  width: 31px;
+  height: 31px;
+}
+
+/* =========================================================
+   TRUST COLORS
+========================================================= */
+
+.trust-home-card.blue .trust-icon {
+  color: #167de5;
+  background: #e8f3ff;
+}
+
+.trust-home-card.yellow .trust-icon {
+  color: #f0ad1d;
+  background: #fff6dc;
+}
+
+.trust-home-card.green .trust-icon {
+  color: #13b78a;
+  background: #e5fbf4;
+}
+
+.trust-home-card.purple .trust-icon {
+  color: #7545db;
+  background: #f1eaff;
+}
+
+/* =========================================================
+   TRUST CARD TEXT
+========================================================= */
+
+.trust-home-card h3 {
+  max-width: 230px;
+
+  margin: 0 auto 10px;
+
+  color: #0d1a40;
+
+  font-size: 19px;
+
+  font-weight: 900;
+
+  line-height: 1.25;
+}
+
+.trust-home-card p {
+  max-width: 250px;
+
+  margin: 0 auto;
+
+  color: #66748b;
+
+  font-size: 16px;
+
+  font-weight: 500;
+
+  line-height: 1.6;
+}
+
+/* =========================================================
+   VOICES HEADING
+========================================================= */
+
+.voices-heading {
+  margin: 52px auto 27px;
+
+  text-align: center;
+}
+
+.voices-heading h2 {
+  margin: 9px 0 9px;
+
+  color: #0d1a40;
+
+  font-size: 43px;
+
+  font-weight: 900;
+
+  line-height: 1.1;
+
+  letter-spacing: -0.04em;
+}
+
+.voices-heading p {
+  max-width: 760px;
+
+  margin: 0 auto;
+
+  color: #687994;
+
+  font-size: 17px;
+
+  line-height: 1.55;
+}
+
+/* =========================================================
+   TESTIMONIAL CAROUSEL
+========================================================= */
+
+.testimonial-carousel {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  padding: 10px 0 20px;
+
+  /* Fade edges */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 5%,
+    #000 95%,
+    transparent 100%
+  );
+
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 5%,
+    #000 95%,
+    transparent 100%
+  );
+}
+
+/* =========================================================
+   TESTIMONIAL TRACK
+========================================================= */
+
+.testimonial-track {
+  display: flex;
+
+  width: max-content;
+
+  gap: 20px;
+
+  /*
+    Continuous movement.
+    Lower value = faster.
+  */
+  animation: testimonialScroll 30s linear infinite;
+
+  will-change: transform;
+}
+
+/* =========================================================
+   PAUSE ONLY ON DESKTOP HOVER
+========================================================= */
+
+.testimonial-carousel:hover .testimonial-track {
+  animation-play-state: paused;
+}
+
+/* =========================================================
+   TESTIMONIAL CARD
+========================================================= */
+
+.testimonial-home-card {
+  flex: 0 0 390px;
+
+  min-height: 235px;
+
+  padding: 24px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #dce9f5;
+
+  border-radius: 19px;
+
+  background: #ffffff;
+
+  box-shadow: 0 9px 26px rgba(40, 93, 140, 0.06);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.testimonial-home-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow: 0 18px 35px rgba(40, 93, 140, 0.1);
+}
+
+/* =========================================================
+   TESTIMONIAL TOP
+========================================================= */
+
+.testimonial-top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+.testimonial-top svg {
+  width: 27px;
+  height: 27px;
+
+  color: #4d96ff;
+}
+
+.testimonial-top span {
+  color: #ffc400;
+
+  font-size: 17px;
+
+  letter-spacing: 2px;
+
+  line-height: 1;
+}
+
+/* =========================================================
+   TESTIMONIAL MESSAGE
+========================================================= */
+
+.testimonial-home-card p {
+  min-height: 78px;
+
+  margin: 17px 0;
+
+  color: #34425c;
+
+  font-size: 16px;
+
+  font-weight: 500;
+
+  line-height: 1.65;
+}
+
+/* =========================================================
+   PERSON
+========================================================= */
+
+.testimonial-person {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+/* =========================================================
+   AVATAR
+========================================================= */
+
+.avatar {
+  width: 49px;
+  height: 49px;
+
+  flex: 0 0 49px;
+
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  color: #ffffff;
+
+  font-size: 19px;
+
+  font-weight: 900;
+
+  background: linear-gradient(135deg, #4d96ff, #8e5eea);
+}
+
+.avatar-1 {
+  background: linear-gradient(135deg, #ef6cf5, #8e5eea);
+}
+
+.avatar-2 {
+  background: linear-gradient(135deg, #31b77a, #4d96ff);
+}
+
+/* =========================================================
+   PERSON NAME
+========================================================= */
+
+.testimonial-person strong {
+  display: block;
+
+  color: #24324a;
+
+  font-size: 15px;
+
+  font-weight: 900;
+
+  line-height: 1.3;
+}
+
+.testimonial-person span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #7a8799;
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  line-height: 1.3;
+}
+
+/* =========================================================
+   CONTINUOUS RIGHT → LEFT ANIMATION
+========================================================= */
+
+@keyframes testimonialScroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-50% - 10px));
+  }
+}
+
+/* =========================================================
+   DOTS
+========================================================= */
+
+.testimonial-dots {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-top: 17px;
+}
+
+.testimonial-dots button {
+  width: 10px;
+  height: 10px;
+
+  padding: 0;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background: #cbdcf1;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.testimonial-dots button.active {
+  background: #167de5;
+
+  transform: scale(1.25);
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+  .parent-section {
+    padding: 58px 0 65px;
+  }
+
+  .parent-container {
+    width: calc(100% - 32px);
+  }
+
+  .parent-heading h2 {
+    font-size: 46px;
+  }
+
+  .parent-heading p {
+    font-size: 17px;
+  }
+
+  .trust-home-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 17px;
+  }
+
+  .trust-home-card {
+    min-height: 235px;
+  }
+
+  .trust-home-card h3 {
+    font-size: 19px;
+  }
+
+  .trust-home-card p {
+    font-size: 16px;
+  }
+
+  .voices-heading h2 {
+    font-size: 40px;
+  }
+
+  .voices-heading p {
+    font-size: 16px;
+  }
+
+  .testimonial-home-card {
+    flex-basis: 360px;
+
+    min-height: 230px;
+
+    padding: 22px;
+  }
+
+  .testimonial-home-card p {
+    font-size: 15px;
+  }
+  .testimonial-track {
+    animation-duration: 28s;
+  }
+
+  .testimonial-home-card {
+    flex-basis: 360px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+  .parent-section {
+    padding: 48px 0 52px;
+  }
+
+  .parent-container {
+    width: calc(100% - 28px);
+  }
+
+  /* -----------------------------------------
+     HEADING
+  ----------------------------------------- */
+
+  .parent-heading {
+    margin-bottom: 27px;
+  }
+
+  .parent-heading > span,
+  .voices-heading > span {
+    font-size: 14px;
+
+    letter-spacing: 0.13em;
+  }
+
+  .parent-heading h2 {
+    margin: 9px 0 12px;
+
+    font-size: 38px;
+
+    line-height: 1.08;
+  }
+
+  .parent-heading p {
+    font-size: 16px;
+
+    line-height: 1.6;
+  }
+
+  .desktop-break {
+    display: none;
+  }
+
+  /* -----------------------------------------
+     TRUST CARDS
+  ----------------------------------------- */
+
+  .trust-home-grid {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+  .trust-home-card {
+    min-height: 0;
+
+    padding: 25px 20px;
+
+    border-radius: 18px;
+  }
+
+  .trust-icon {
+    width: 64px;
+    height: 64px;
+
+    margin-bottom: 16px;
+  }
+
+  .trust-icon svg {
+    width: 29px;
+    height: 29px;
+  }
+
+  .trust-home-card h3 {
+    max-width: 280px;
+
+    margin-bottom: 9px;
+
+    font-size: 20px;
+  }
+
+  .trust-home-card p {
+    max-width: 330px;
+
+    font-size: 16px;
+
+    line-height: 1.6;
+  }
+
+  /* -----------------------------------------
+     VOICES
+  ----------------------------------------- */
+
+  .voices-heading {
+    margin: 42px auto 24px;
+  }
+
+  .voices-heading h2 {
+    font-size: 36px;
+  }
+
+  .voices-heading p {
+    font-size: 16px;
+
+    line-height: 1.55;
+  }
+
+  /* -----------------------------------------
+     CAROUSEL
+  ----------------------------------------- */
+
+  .testimonial-carousel {
+    padding: 7px 0 16px;
+
+    /*
+      Keep the complete track visible.
+      DO NOT hide cards on mobile.
+    */
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 4%,
+      #000 96%,
+      transparent 100%
+    );
+
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      #000 4%,
+      #000 96%,
+      transparent 100%
+    );
+  }
+
+  .testimonial-track {
+    /*
+      Faster mobile movement
+    */
+    animation-duration: 24s;
+
+    gap: 14px;
+  }
+
+  .testimonial-home-card {
+    flex: 0 0 330px;
+
+    min-height: 220px;
+
+    padding: 21px;
+
+    border-radius: 17px;
+  }
+
+  .testimonial-top svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  .testimonial-top span {
+    font-size: 16px;
+  }
+
+  .testimonial-home-card p {
+    min-height: 70px;
+
+    margin: 15px 0;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+  }
+
+  .avatar {
+    width: 47px;
+    height: 47px;
+
+    flex-basis: 47px;
+
+    font-size: 18px;
+  }
+
+  .testimonial-person strong {
+    font-size: 15px;
+  }
+
+  .testimonial-person span {
+    font-size: 13px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+  .parent-section {
+    padding: 43px 0 48px;
+  }
+
+  .parent-container {
+    width: calc(100% - 22px);
+  }
+
+  /* -----------------------------------------
+     HEADING
+  ----------------------------------------- */
+
+  .parent-heading > span,
+  .voices-heading > span {
+    font-size: 13px;
+  }
+
+  .parent-heading h2 {
+    font-size: 34px;
+  }
+
+  .parent-heading p {
+    font-size: 15px;
+  }
+
+  /* -----------------------------------------
+     TRUST CARDS
+  ----------------------------------------- */
+
+  .trust-home-card {
+    padding: 23px 17px;
+  }
+
+  .trust-home-card h3 {
+    font-size: 19px;
+  }
+
+  .trust-home-card p {
+    font-size: 15px;
+  }
+
+  /* -----------------------------------------
+     VOICES
+  ----------------------------------------- */
+
+  .voices-heading {
+    margin-top: 38px;
+  }
+
+  .voices-heading h2 {
+    font-size: 33px;
+  }
+
+  .voices-heading p {
+    font-size: 15px;
+  }
+
+  /* -----------------------------------------
+     FASTER CONTINUOUS CAROUSEL
+  ----------------------------------------- */
+
+  .testimonial-track {
+    gap: 12px;
+
+    /*
+      Faster than tablet/mobile
+    */
+    animation-duration: 22s;
+  }
+
+  .testimonial-home-card {
+    /*
+      Slightly smaller than 330px so
+      two cards can partially appear.
+    */
+    flex-basis: 310px;
+
+    min-height: 215px;
+
+    padding: 19px;
+  }
+
+  .testimonial-top span {
+    font-size: 15px;
+  }
+
+  .testimonial-home-card p {
+    font-size: 15px;
+
+    line-height: 1.55;
+  }
+
+  .testimonial-person strong {
+    font-size: 14px;
+  }
+
+  .testimonial-person span {
+    font-size: 12px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+  .parent-container {
+    width: calc(100% - 18px);
+  }
+
+  .parent-heading h2 {
+    font-size: 31px;
+  }
+
+  .parent-heading p {
+    font-size: 14px;
+  }
+
+  .trust-home-card h3 {
+    font-size: 18px;
+  }
+
+  .trust-home-card p {
+    font-size: 14px;
+  }
+
+  .voices-heading h2 {
+    font-size: 30px;
+  }
+
+  .voices-heading p {
+    font-size: 14px;
+  }
+
+  .testimonial-track {
+    gap: 10px;
+
+    /*
+      Keep it fast even on very small screens.
+    */
+    animation-duration: 22s;
+  }
+
+  .testimonial-home-card {
+    flex-basis: 285px;
+
+    min-height: 205px;
+
+    padding: 17px;
+  }
+
+  .testimonial-top span {
+    font-size: 14px;
+  }
+
+  .testimonial-home-card p {
+    min-height: 65px;
+
+    font-size: 14px;
+  }
+
+  .avatar {
+    width: 44px;
+    height: 44px;
+
+    flex-basis: 44px;
+
+    font-size: 17px;
+  }
+
+  .testimonial-person strong {
+    font-size: 14px;
+  }
+
+  .testimonial-person span {
+    font-size: 12px;
+  }
+}
+
+/* =========================================
+   REVEAL ON EVERY SECTION VISIT
+========================================= */
+
+.parent-section .parent-heading,
+.parent-section .trust-home-card,
+.parent-section .voices-heading {
+  opacity: 0;
+}
+
+/* Main heading */
+.parent-section.parent-in-view .parent-heading {
+  animation: parentHeadingReveal 0.7s ease both;
+}
+
+/* Trust cards */
+.parent-section.parent-in-view .trust-home-card {
+  animation: parentCardReveal 0.65s ease both;
+}
+
+.parent-section.parent-in-view .trust-home-grid .trust-home-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.parent-section.parent-in-view .trust-home-grid .trust-home-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.parent-section.parent-in-view .trust-home-grid .trust-home-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.parent-section.parent-in-view .trust-home-grid .trust-home-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+/* Testimonial heading */
+.parent-section.parent-in-view .voices-heading {
+  animation: parentHeadingReveal 0.7s ease 0.15s both;
+}
+
+@keyframes parentHeadingReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes parentCardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .parent-section.parent-in-view .parent-heading,
+  .parent-section.parent-in-view .trust-home-card,
+  .parent-section.parent-in-view .voices-heading {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Perfectly round testimonial avatars */
+.parent-section .testimonial-person .avatar {
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  min-height: 52px;
+  flex: 0 0 52px;
+
+  display: grid;
+  place-items: center;
+
+  box-sizing: border-box;
+  border-radius: 50%;
+  overflow: hidden;
+
+  color: #ffffff;
+  font-size: 19px;
+  font-weight: 900;
+  line-height: 1;
+
+  background: linear-gradient(135deg, #4d96ff, #8e5eea);
+}
+
+.parent-section .testimonial-person .avatar-1 {
+  background: linear-gradient(135deg, #ef6cf5, #8e5eea);
+}
+
+.parent-section .testimonial-person .avatar-2 {
+  background: linear-gradient(135deg, #31b77a, #4d96ff);
+}
+
+/*
+  ParentSection.css heading-only update
+  Append this block to the END of the existing ParentSection.css file.
+  All card, carousel, background, reveal, and layout styles remain unchanged.
+*/
+
+/* Main section eyebrow: match the Teaching.css reference */
+.parent-heading .parent-eyebrow,
+.voices-heading .voices-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: 0 0 14px;
+  color: #1679d7;
+  font-size: 19px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.parent-heading .parent-eyebrow-line,
+.voices-heading .voices-eyebrow-line {
+  display: block;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 2px;
+  border-radius: 10px;
+  background: #a9cdec;
+}
+
+/* Main heading typography */
+.parent-heading h2,
+.voices-heading h2 {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  color: #09245c;
+  font-size: clamp(38px, 4vw, 57px);
+  font-weight: 900;
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+.parent-heading h2 strong,
+.voices-heading h2 strong {
+  color: #1599df;
+  font-weight: 900;
+}
+
+/* Keep the original supporting-copy styling and spacing. */
+.parent-heading p,
+.voices-heading p {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Tablet */
+@media (max-width: 1000px) {
+  .parent-heading h2,
+  .voices-heading h2 {
+    font-size: clamp(34px, 5vw, 46px);
+  }
+
+  .parent-heading .parent-eyebrow,
+  .voices-heading .voices-eyebrow {
+    font-size: 16px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 650px) {
+  .parent-heading .parent-eyebrow,
+  .voices-heading .voices-eyebrow {
+    gap: 10px;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+  }
+
+  .parent-heading .parent-eyebrow-line,
+  .voices-heading .voices-eyebrow-line {
+    flex-basis: 25px;
+    width: 25px;
+  }
+
+  .parent-heading h2,
+  .voices-heading h2 {
+    font-size: clamp(30px, 7.8vw, 38px);
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+  }
+}
+
+/* Very narrow screens */
+@media (max-width: 360px) {
+  .parent-heading .parent-eyebrow,
+  .voices-heading .voices-eyebrow {
+    gap: 7px;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+  }
+
+  .parent-heading .parent-eyebrow-line,
+  .voices-heading .voices-eyebrow-line {
+    flex-basis: 16px;
+    width: 16px;
+  }
+
+  .parent-heading h2,
+  .voices-heading h2 {
+    font-size: 30px;
+  }
+}

@@ -1,0 +1,4 @@
+.pricing-page { width: min(1100px, calc(100% - 36px)); margin: 80px auto 0; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; align-items: start; }
+.pricing-note { margin-top: 20px; text-align: center; color: #7A8799; font-size: 11px; }
+@media (max-width: 800px) { .pricing-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; } }

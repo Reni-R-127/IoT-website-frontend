@@ -1,0 +1,170 @@
+.about-page {
+  width: min(1180px, calc(100% - 36px));
+  margin: 80px auto 0;
+}
+.about-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+.about-intro h2,
+.benefits-section h2 {
+  margin: 10px 0 0;
+  color: #24324a;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.05;
+}
+.about-intro p,
+.benefits-section p {
+  margin: 0;
+  color: #667085;
+  line-height: 1.8;
+  font-size: 15px;
+}
+.mission-card {
+  margin-top: 70px;
+  padding: 34px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  border-radius: 22px;
+  background: linear-gradient(120deg, #eaf4ff, #f3eaff);
+}
+.mission-card svg {
+  flex: 0 0 auto;
+  color: #e0a900;
+}
+.mission-card span {
+  color: #4d96ff;
+  font-size: 15px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.mission-card h2 {
+  max-width: 850px;
+  margin: 8px 0 0;
+  color: #24324a;
+  font-size: clamp(23px, 3vw, 34px);
+  line-height: 1.15;
+}
+.about-section,
+.approach-section {
+  margin-top: 95px;
+}
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.topic-grid div {
+  min-height: 120px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #dde7f2;
+  border-radius: 17px;
+  background: #fff;
+}
+.topic-grid svg {
+  color: #4d96ff;
+}
+.topic-grid b {
+  color: #24324a;
+  font-size: 14px;
+}
+.approach-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.approach-grid div {
+  padding: 25px;
+  border-radius: 17px;
+  background: #f8fafc;
+}
+.approach-grid span {
+  color: #4d96ff;
+  font-weight: 900;
+  font-size: 11px;
+}
+.approach-grid h3 {
+  margin: 22px 0 7px;
+  color: #24324a;
+  font-size: 20px;
+}
+.approach-grid p {
+  margin: 0;
+  color: #667085;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.benefits-section {
+  margin-top: 95px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+.benefit-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.benefit-list div {
+  padding: 15px;
+  border: 1px solid #dde7f2;
+  border-radius: 12px;
+  color: #526077;
+  font-size: 13px;
+}
+.benefit-list span {
+  margin-right: 8px;
+  color: #4d96ff;
+  font-weight: 900;
+}
+.about-cta {
+  margin-top: 50px;
+  display: flex;
+  gap: 10px;
+}
+.about-cta a {
+  padding: 13px 17px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 900;
+}
+.about-cta a:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #4d96ff;
+  background: #eaf4ff;
+}
+/* .about-cta a:last-child {
+  color: #24324a;
+  background: #6bcb77;
+} */
+@media (max-width: 800px) {
+  .about-intro,
+  .benefits-section {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .topic-grid,
+  .approach-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 520px) {
+  .topic-grid,
+  .approach-grid,
+  .benefit-list {
+    grid-template-columns: 1fr;
+  }
+  .mission-card {
+    padding: 25px;
+  }
+}

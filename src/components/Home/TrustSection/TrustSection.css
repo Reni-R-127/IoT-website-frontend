@@ -1,0 +1,133 @@
+/* =========================================
+   TRUST SECTION
+========================================= */
+
+.trust-section {
+  width: min(1180px, calc(100% - 36px));
+
+  margin: 95px auto 0;
+
+  padding: 45px;
+
+  display: grid;
+
+  grid-template-columns:
+    0.9fr 1.1fr;
+
+  gap: 60px;
+
+  border-radius: 26px;
+
+  background:
+    linear-gradient(
+      120deg,
+      #EAF4FF,
+      #F3EAFF
+    );
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   COPY
+========================================= */
+
+.eyebrow {
+  color: #4D96FF;
+
+  font-size: 15px;
+
+  font-weight: 900;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.12em;
+}
+
+.trust-copy h2 {
+  margin: 9px 0 12px;
+
+  color: #24324A;
+
+  font-size:
+    clamp(28px, 4vw, 40px);
+
+  line-height: 1.05;
+}
+
+.trust-copy p {
+  margin: 0;
+
+  color: #667085;
+
+  font-size: 15px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================
+   TRUST GRID
+========================================= */
+
+.trust-grid {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 11px;
+}
+
+.trust-grid div {
+  min-height: 110px;
+
+  padding: 18px;
+
+  border-radius: 14px;
+
+  background:
+    rgba(255, 255, 255, 0.82);
+
+  display: grid;
+
+  align-content: space-between;
+}
+
+.trust-grid span {
+  color: #4D96FF;
+
+  font-size: 10px;
+
+  font-weight: 900;
+}
+
+.trust-grid svg {
+  color: #4D96FF;
+}
+
+.trust-grid b {
+  color: #24324A;
+
+  font-size: 12px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 950px) {
+
+  .trust-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .trust-section {
+    padding: 30px;
+  }
+}

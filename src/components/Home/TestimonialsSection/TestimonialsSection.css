@@ -1,0 +1,54 @@
+/* =========================================
+   TESTIMONIAL SECTION
+========================================= */
+
+.testimonials-section {
+  width: min(1180px, calc(100% - 36px));
+
+  margin: 95px auto 0;
+}
+
+
+/* =========================================
+   TESTIMONIAL GRID
+========================================= */
+
+.testimonial-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 15px;
+}
+
+
+/* =========================================
+   TESTIMONIAL WRAPPER
+========================================= */
+
+.testimonials-wrapper {
+  width: 100%;
+
+  overflow: hidden;
+}
+
+.testimonials-track {
+  display: flex;
+
+  gap: 15px;
+
+  width: max-content;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+}

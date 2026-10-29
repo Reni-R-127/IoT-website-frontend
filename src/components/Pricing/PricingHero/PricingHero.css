@@ -1,0 +1,1426 @@
+/* ========================================
+
+   PRICING HERO
+
+======================================== */
+
+.pricing-hero {
+  position: relative;
+
+  isolation: isolate;
+
+  width: 100%;
+
+  padding: 110px 0 30px;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+
+  background:
+    radial-gradient(
+      circle at 67% 25%,
+
+      rgba(203, 237, 255, 0.65),
+      transparent 31%
+    ),
+    radial-gradient(
+      circle at 43% 35%,
+
+      rgba(232, 222, 255, 0.4),
+      transparent 34%
+    ),
+    linear-gradient(
+      110deg,
+      #f8fbff 0%,
+
+      #f5f8ff 52%,
+
+      #fffaf1 100%
+    );
+}
+
+.pricing-hero *,
+.pricing-hero *::before,
+.pricing-hero *::after {
+  box-sizing: border-box;
+}
+
+/* ========================================
+
+   BACKGROUND DECORATIONS
+
+======================================== */
+
+.pricing-hero-decoration {
+  position: absolute;
+
+  z-index: -1;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.pricing-hero-decoration-one {
+  top: -75px;
+
+  left: -75px;
+
+  width: 145px;
+
+  height: 145px;
+
+  background: rgba(240, 111, 255, 0.14);
+}
+
+.pricing-hero-decoration-two {
+  top: 35px;
+
+  right: 23%;
+
+  width: 220px;
+
+  height: 220px;
+
+  background: rgba(91, 220, 247, 0.13);
+}
+
+.pricing-hero-decoration-three {
+  bottom: -105px;
+
+  left: -60px;
+
+  width: 190px;
+
+  height: 190px;
+
+  background: rgba(160, 132, 255, 0.12);
+}
+
+.pricing-hero-decoration-four {
+  bottom: -100px;
+
+  right: 35%;
+
+  width: 260px;
+
+  height: 200px;
+
+  background: rgba(206, 154, 255, 0.12);
+}
+
+/* ========================================
+
+   MAIN LAYOUT
+
+======================================== */
+
+.pricing-hero-container {
+  display: grid;
+
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+
+  align-items: center;
+
+  gap: 24px;
+
+  width: min(1360px, calc(100% - 80px));
+
+  margin: 0 auto;
+}
+
+.pricing-hero-content {
+  position: relative;
+
+  z-index: 2;
+
+  min-width: 0;
+
+  opacity: 0;
+
+  transform: translateY(18px);
+}
+
+.pricing-hero-visible .pricing-hero-content {
+  animation: pricingContentReveal 0.7s ease-out forwards;
+}
+
+/* ========================================
+
+   EYEBROW
+
+======================================== */
+
+.pricing-hero-eyebrow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-bottom: 14px;
+  color: #1679d7;
+  font-size: 19px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.pricing-hero-eyebrow-line {
+  display: block;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 2px;
+  border-radius: 10px;
+  background: #a9cdec;
+}
+
+/* ========================================
+
+   HEADING
+
+======================================== */
+
+.pricing-hero-content h1 {
+  max-width: 650px;
+  margin: 0;
+  color: #09245c;
+  font-size: clamp(38px, 4vw, 57px);
+  font-weight: 900;
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+  overflow-wrap: break-word;
+}
+
+.pricing-hero-content h1 span {
+  color: #1599df;
+  font-weight: 900;
+}
+
+/* ========================================
+
+   DESCRIPTION
+
+======================================== */
+
+.pricing-hero-description {
+  max-width: 550px;
+
+  margin: 15px 0 20px;
+
+  color: #718099;
+
+  font-size: clamp(16px, 1.35vw, 20px);
+
+  font-weight: 500;
+
+  line-height: 1.55;
+}
+
+/* ========================================
+
+   BENEFIT ITEMS
+
+======================================== */
+
+.pricing-hero-benefits {
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 12px;
+
+  max-width: 530px;
+
+  margin-top: 21px;
+}
+
+.pricing-benefit {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  min-width: 0;
+
+  text-align: center;
+
+  opacity: 0;
+
+  transform: translateY(12px);
+}
+
+.pricing-hero-visible .pricing-benefit {
+  animation: pricingContentReveal 0.55s ease-out forwards;
+
+  animation-delay: var(--benefit-delay);
+}
+
+.pricing-benefit-icon {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 56px;
+
+  height: 56px;
+
+  margin-bottom: 9px;
+
+  border-radius: 50%;
+}
+
+.pricing-benefit-purple .pricing-benefit-icon {
+  color: #253b83;
+
+  background: #eadbff;
+}
+
+.pricing-benefit-blue .pricing-benefit-icon {
+  color: #214eae;
+
+  background: #d8edff;
+}
+
+.pricing-benefit-green .pricing-benefit-icon {
+  color: #087e76;
+
+  background: #c9f5ed;
+}
+
+.pricing-benefit-yellow .pricing-benefit-icon {
+  color: #e8a900;
+
+  background: #fff0bd;
+}
+
+.pricing-benefit p {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2px;
+
+  margin: 0;
+
+  color: #243653;
+
+  font-size: 12px;
+
+  font-weight: 650;
+
+  line-height: 1.4;
+}
+
+/* ========================================
+
+   OPTIONAL CTA
+
+======================================== */
+
+.pricing-hero-cta {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  min-height: 44px;
+
+  margin-top: 20px;
+
+  padding: 0 18px;
+
+  border-radius: 10px;
+
+  color: #ffffff;
+
+  background: #267cf3;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.pricing-hero-cta:hover {
+  background: #145ed0;
+
+  transform: translateY(-2px);
+}
+
+/* ========================================
+
+   HERO IMAGE
+
+======================================== */
+
+.pricing-hero-visual {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-width: 0;
+
+  opacity: 0;
+
+  transform: translateX(18px);
+}
+
+.pricing-hero-visible .pricing-hero-visual {
+  animation: pricingVisualReveal 0.85s ease-out 0.1s forwards;
+}
+
+.pricing-hero-image-glow {
+  position: absolute;
+
+  z-index: -1;
+
+  width: 90%;
+
+  height: 80%;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse at 35% 40%,
+
+      rgba(100, 202, 255, 0.25),
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse at 70% 45%,
+
+      rgba(177, 126, 255, 0.2),
+      transparent 60%
+    );
+
+  filter: blur(22px);
+}
+
+.pricing-hero-image {
+  display: block;
+
+  width: 100%;
+
+  max-width: 790px;
+
+  height: auto;
+
+  object-fit: contain;
+
+  animation: pricingImageFloat 5s ease-in-out 1s infinite;
+}
+
+/* ========================================
+
+   ANIMATIONS
+
+======================================== */
+
+@keyframes pricingContentReveal {
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+@keyframes pricingVisualReveal {
+  to {
+    opacity: 1;
+
+    transform: translateX(0);
+  }
+}
+
+@keyframes pricingImageFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* ========================================
+
+   LAPTOP
+
+======================================== */
+
+@media (max-width: 1150px) {
+  .pricing-hero {
+    padding: 42px 0 28px;
+  }
+
+  .pricing-hero-container {
+    width: calc(100% - 52px);
+
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+
+    gap: 15px;
+  }
+
+  .pricing-hero-content h1 {
+    font-size: clamp(38px, 4.5vw, 50px);
+  }
+
+  .pricing-hero-description {
+    font-size: 16px;
+  }
+
+  .pricing-benefit-icon {
+    width: 48px;
+
+    height: 48px;
+  }
+
+  .pricing-benefit-icon svg {
+    width: 25px;
+
+    height: 25px;
+  }
+
+  .pricing-benefit p {
+    font-size: 11px;
+  }
+}
+
+/* ========================================
+
+   TABLET
+
+======================================== */
+
+@media (max-width: 800px) {
+  .pricing-hero {
+    padding: 45px 0 25px;
+  }
+
+  .pricing-hero-container {
+    width: calc(100% - 40px);
+
+    grid-template-columns: minmax(0, 1fr);
+
+    gap: 10px;
+  }
+
+  .pricing-hero-content {
+    width: 100%;
+
+    max-width: 650px;
+
+    margin: 0 auto;
+  }
+
+  .pricing-hero-content h1 {
+    font-size: clamp(36px, 5.5vw, 50px);
+    line-height: 1.04;
+  }
+
+  .pricing-hero-description {
+    max-width: 600px;
+
+    font-size: 17px;
+  }
+
+  .pricing-hero-benefits {
+    max-width: 490px;
+
+    margin-top: 18px;
+  }
+
+  .pricing-benefit-icon {
+    width: 52px;
+
+    height: 52px;
+  }
+
+  .pricing-benefit p {
+    font-size: 12px;
+  }
+
+  .pricing-hero-visual {
+    width: 100%;
+
+    max-width: 650px;
+
+    margin: 0 auto;
+  }
+
+  .pricing-hero-image {
+    max-width: 620px;
+  }
+
+  .pricing-hero-decoration-two {
+    right: 5%;
+  }
+}
+
+/* ========================================
+
+   MOBILE
+
+======================================== */
+
+@media (max-width: 520px) {
+  .pricing-hero {
+    padding: 35px 0 22px;
+  }
+
+  .pricing-hero-container {
+    width: calc(100% - 30px);
+
+    gap: 8px;
+  }
+
+  .pricing-hero-eyebrow {
+    gap: 9px;
+    margin-bottom: 17px;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+  }
+
+  .pricing-hero-eyebrow-line {
+    flex-basis: 25px;
+    width: 25px;
+  }
+
+  .pricing-hero-content h1 {
+    font-size: clamp(32px, 8vw, 43px);
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+  }
+
+  .pricing-hero-description {
+    margin: 12px 0 16px;
+
+    font-size: 15px;
+
+    line-height: 1.55;
+  }
+
+  .pricing-hero-benefits {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 7px;
+
+    margin-top: 16px;
+  }
+
+  .pricing-benefit-icon {
+    width: 43px;
+
+    height: 43px;
+
+    margin-bottom: 7px;
+  }
+
+  .pricing-benefit-icon svg {
+    width: 22px;
+
+    height: 22px;
+  }
+
+  .pricing-benefit p {
+    font-size: 10px;
+
+    line-height: 1.35;
+  }
+
+  .pricing-hero-visual {
+    margin-top: 5px;
+  }
+
+  .pricing-hero-image {
+    width: 100%;
+  }
+
+  .pricing-hero-cta {
+    min-height: 41px;
+
+    margin-top: 15px;
+
+    font-size: 13px;
+  }
+
+  .pricing-hero-decoration-one {
+    top: -70px;
+
+    left: -75px;
+
+    width: 125px;
+
+    height: 125px;
+  }
+
+  .pricing-hero-decoration-two {
+    top: 30px;
+
+    right: -60px;
+
+    width: 145px;
+
+    height: 145px;
+  }
+}
+
+/* ========================================
+
+   SMALL PHONES
+
+======================================== */
+
+@media (max-width: 360px) {
+  .pricing-hero-container {
+    width: calc(100% - 24px);
+  }
+
+  .pricing-hero-content h1 {
+    font-size: 32px;
+    line-height: 1.08;
+  }
+
+  .pricing-hero-description {
+    font-size: 14px;
+  }
+
+  .pricing-hero-benefits {
+    gap: 4px;
+  }
+
+  .pricing-benefit-icon {
+    width: 39px;
+
+    height: 39px;
+  }
+
+  .pricing-benefit p {
+    font-size: 9px;
+  }
+}
+
+/* ========================================
+
+   REDUCED MOTION
+
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .pricing-hero-content,
+  .pricing-hero-visual,
+  .pricing-benefit,
+  .pricing-hero-image {
+    opacity: 1;
+
+    transform: none;
+
+    animation: none !important;
+  }
+
+  .pricing-hero-cta {
+    transition: none;
+  }
+}
+
+/* =========================================
+
+   PRICING HERO — MOBILE OPTIMIZATION
+
+========================================= */
+
+@media (max-width: 520px) {
+  .pricing-hero {
+    /* Keep the heading below the fixed navbar */
+
+    padding: 110px 0 30px;
+
+    overflow: hidden;
+  }
+
+  .pricing-hero-container {
+    width: calc(100% - 28px);
+
+    grid-template-columns: minmax(0, 1fr);
+
+    gap: 18px;
+
+    margin: 0 auto;
+  }
+
+  /* Heading and content */
+
+  .pricing-hero-content {
+    width: 100%;
+
+    max-width: 100%;
+
+    min-width: 0;
+
+    margin: 0 auto;
+
+    text-align: left;
+  }
+
+  .pricing-hero-eyebrow {
+    gap: 10px;
+
+    margin-bottom: 17px;
+
+    font-size: 14px;
+
+    letter-spacing: 0.16em;
+  }
+
+  .pricing-hero-eyebrow-line {
+    width: 45px;
+  }
+
+  .pricing-hero-content h1 {
+    max-width: 100%;
+
+    margin: 0;
+
+    font-size: clamp(37px, 9vw, 46px);
+
+    line-height: 1.08;
+
+    letter-spacing: -0.045em;
+
+    overflow-wrap: normal;
+  }
+
+  /* Preserve the intended three-line heading on mobile */
+
+  .pricing-hero-content h1 .pricing-mobile-break {
+    display: block;
+  }
+
+  .pricing-hero-description {
+    max-width: 100%;
+
+    margin: 16px 0 20px;
+
+    font-size: 17px;
+
+    line-height: 1.65;
+  }
+
+  /* Benefits */
+
+  .pricing-hero-benefits {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 8px;
+
+    width: 100%;
+
+    max-width: 100%;
+
+    margin-top: 22px;
+  }
+
+  .pricing-benefit {
+    min-width: 0;
+  }
+
+  .pricing-benefit-icon {
+    width: 48px;
+
+    height: 48px;
+
+    margin-bottom: 9px;
+  }
+
+  .pricing-benefit-icon svg {
+    width: 25px;
+
+    height: 25px;
+  }
+
+  .pricing-benefit p {
+    font-size: 12px;
+
+    line-height: 1.45;
+
+    font-weight: 700;
+
+    overflow-wrap: anywhere;
+  }
+
+  /* Larger image */
+
+  .pricing-hero-visual {
+    width: 100%;
+
+    max-width: none;
+
+    min-width: 0;
+
+    margin: 4px auto 0;
+  }
+
+  .pricing-hero-image {
+    display: block;
+
+    width: 112%;
+
+    max-width: none;
+
+    height: auto;
+
+    margin-left: -6%;
+
+    object-fit: contain;
+  }
+
+  .pricing-hero-image-glow {
+    width: 100%;
+
+    height: 85%;
+  }
+
+  /* Center the button */
+
+  .pricing-hero-cta {
+    display: flex;
+
+    width: fit-content;
+
+    max-width: 100%;
+
+    min-height: 49px;
+
+    margin: 24px auto 0;
+
+    padding: 0 25px;
+
+    gap: 11px;
+
+    font-size: 16px;
+
+    text-align: center;
+  }
+
+  .pricing-hero-decoration-two {
+    top: 100px;
+
+    right: -65px;
+
+    width: 140px;
+
+    height: 140px;
+  }
+}
+
+/* =========================================
+
+   SMALL PHONES
+
+========================================= */
+
+@media (max-width: 360px) {
+  .pricing-hero {
+    padding-top: 100px;
+  }
+
+  .pricing-hero-container {
+    width: calc(100% - 24px);
+  }
+
+  .pricing-hero-content h1 {
+    font-size: 35px;
+
+    line-height: 1.1;
+  }
+
+  .pricing-hero-description {
+    font-size: 16px;
+  }
+
+  .pricing-hero-benefits {
+    gap: 5px;
+  }
+
+  .pricing-benefit-icon {
+    width: 42px;
+
+    height: 42px;
+  }
+
+  .pricing-benefit p {
+    font-size: 11px;
+  }
+
+  .pricing-hero-image {
+    width: 108%;
+
+    margin-left: -4%;
+  }
+
+  .pricing-hero-cta {
+    min-height: 48px;
+
+    padding: 0 18px;
+
+    font-size: 15px;
+  }
+}
+
+/*
+
+ * PricingHero heading standardization
+
+ * Append this patch to the END of PricingHero.css.
+
+ * The existing pricing hero layout, illustration, benefits, CTA, and animations are preserved.
+
+ */
+
+.pricing-hero .pricing-hero-eyebrow {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  margin-bottom: 14px;
+
+  color: #1679d7;
+
+  font-size: 19px;
+
+  font-weight: 900;
+
+  line-height: 1;
+
+  letter-spacing: 0.16em;
+}
+
+.pricing-hero .pricing-hero-eyebrow-line {
+  display: block;
+
+  flex: 0 0 42px;
+
+  width: 42px;
+
+  height: 2px;
+
+  border-radius: 0;
+
+  background: #a9cdec;
+}
+
+.pricing-hero .pricing-hero-content h1 {
+  max-width: 650px;
+
+  margin: 0;
+
+  color: #09245c;
+
+  font-size: clamp(38px, 4vw, 57px);
+
+  font-weight: 900;
+
+  line-height: 1.04;
+
+  letter-spacing: -0.045em;
+
+  overflow-wrap: break-word;
+}
+
+.pricing-hero .pricing-hero-content h1 span {
+  color: #1599df;
+
+  font-weight: 900;
+}
+
+@media (max-width: 900px) {
+  .pricing-hero .pricing-hero-eyebrow {
+    gap: 14px;
+
+    font-size: 17px;
+  }
+
+  .pricing-hero .pricing-hero-content h1 {
+    font-size: clamp(36px, 5.5vw, 50px);
+  }
+}
+
+@media (max-width: 520px) {
+  .pricing-hero .pricing-hero-eyebrow {
+    gap: 9px;
+
+    margin-bottom: 17px;
+
+    font-size: 12px;
+
+    letter-spacing: 0.14em;
+  }
+
+  .pricing-hero .pricing-hero-eyebrow-line {
+    flex-basis: 25px;
+
+    width: 25px;
+  }
+
+  .pricing-hero .pricing-hero-content h1 {
+    font-size: clamp(32px, 8vw, 43px);
+
+    line-height: 1.08;
+
+    letter-spacing: -0.04em;
+  }
+}
+
+@media (max-width: 360px) {
+  .pricing-hero .pricing-hero-eyebrow {
+    gap: 7px;
+
+    font-size: 11px;
+  }
+
+  .pricing-hero .pricing-hero-eyebrow-line {
+    flex-basis: 20px;
+
+    width: 20px;
+  }
+
+  .pricing-hero .pricing-hero-content h1 {
+    font-size: 32px;
+  }
+}
+
+
+/* =========================================
+   PRICING HERO — RESPONSIVE LAYOUT
+========================================= */
+
+/* Desktop: text left, illustration right */
+.pricing-hero .pricing-hero-container {
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  grid-template-areas:
+    "content visual"
+    "benefits visual"
+    "cta visual";
+  align-items: center;
+  column-gap: 28px;
+  row-gap: 0;
+}
+
+.pricing-hero .pricing-hero-content {
+  grid-area: content;
+  align-self: end;
+}
+
+.pricing-hero .pricing-hero-visual {
+  grid-area: visual;
+  width: 100%;
+  min-width: 0;
+  align-self: center;
+  justify-self: center;
+}
+
+.pricing-hero .pricing-hero-image {
+  display: block;
+  width: 110%;
+  max-width: 900px;
+  height: auto;
+  margin-left: -5%;
+  object-fit: contain;
+}
+
+.pricing-hero .pricing-hero-benefits {
+  grid-area: benefits;
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.pricing-hero .pricing-hero-cta {
+  grid-area: cta;
+  justify-self: start;
+  margin-top: 20px;
+}
+
+/* Tablet: image before benefits and button */
+@media (max-width: 800px) {
+  .pricing-hero .pricing-hero-container {
+    width: calc(100% - 40px);
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "content"
+      "visual"
+      "benefits"
+      "cta";
+    row-gap: 0;
+  }
+
+  .pricing-hero .pricing-hero-content {
+    width: 100%;
+    max-width: 700px;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .pricing-hero .pricing-hero-visual {
+    width: 100%;
+    max-width: 850px;
+    margin: 8px auto 12px;
+  }
+
+  .pricing-hero .pricing-hero-image {
+    width: 112%;
+    max-width: 900px;
+    margin-left: -6%;
+  }
+
+  .pricing-hero .pricing-hero-benefits {
+    width: 100%;
+    max-width: 650px;
+    margin: 12px auto 0;
+  }
+
+  .pricing-hero .pricing-hero-cta {
+    justify-self: center;
+    margin: 22px auto 0;
+  }
+}
+
+/* Mobile: larger image, then benefits and CTA */
+@media (max-width: 520px) {
+  .pricing-hero .pricing-hero-container {
+    width: calc(100% - 28px);
+    grid-template-areas:
+      "content"
+      "visual"
+      "benefits"
+      "cta";
+    gap: 0;
+  }
+
+  .pricing-hero .pricing-hero-content {
+    text-align: left;
+  }
+
+  .pricing-hero .pricing-hero-visual {
+    width: 100%;
+    max-width: none;
+    margin: 8px auto 14px;
+  }
+
+  .pricing-hero .pricing-hero-image {
+    width: 120%;
+    max-width: none;
+    margin-left: -10%;
+    height: auto;
+  }
+
+  .pricing-hero .pricing-hero-image-glow {
+    width: 110%;
+    height: 90%;
+    left: -5%;
+  }
+
+  .pricing-hero .pricing-hero-benefits {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 7px;
+    margin-top: 4px;
+  }
+
+  .pricing-hero .pricing-benefit {
+    min-width: 0;
+  }
+
+  .pricing-hero .pricing-benefit-icon {
+    width: 46px;
+    height: 46px;
+  }
+
+  .pricing-hero .pricing-benefit-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .pricing-hero .pricing-benefit p {
+    font-size: 11px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  .pricing-hero .pricing-hero-cta {
+    justify-self: center;
+    margin: 22px auto 0;
+  }
+}
+
+/* Small phones */
+@media (max-width: 360px) {
+  .pricing-hero .pricing-hero-container {
+    width: calc(100% - 24px);
+  }
+
+  .pricing-hero .pricing-hero-image {
+    width: 116%;
+    margin-left: -8%;
+  }
+
+  .pricing-hero .pricing-hero-benefits {
+    gap: 5px;
+  }
+
+  .pricing-hero .pricing-benefit-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .pricing-hero .pricing-benefit p {
+    font-size: 10px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .pricing-hero .pricing-hero-content,
+  .pricing-hero .pricing-hero-visual,
+  .pricing-hero .pricing-benefit {
+    opacity: 1;
+    transform: none;
+    animation: none !important;
+  }
+
+  .pricing-hero .pricing-hero-image {
+    animation: none !important;
+  }
+}
+
+
+/* =========================================
+   PRICING HERO — MOBILE SPACING FIX
+========================================= */
+
+@media (max-width: 520px) {
+  /* Reduce gap below the fixed navbar */
+  .pricing-hero {
+    padding-top: 76px !important;
+    padding-bottom: 20px;
+  }
+
+  .pricing-hero-container {
+    width: calc(100% - 28px);
+    gap: 0;
+  }
+
+  /* Use the full available page width */
+  .pricing-hero .pricing-hero-content {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    text-align: left;
+  }
+
+  .pricing-hero .pricing-hero-eyebrow {
+    margin-top: 0;
+    margin-bottom: 14px;
+  }
+
+  .pricing-hero .pricing-hero-content h1 {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    font-size: clamp(34px, 8.2vw, 43px);
+    line-height: 1.08;
+    letter-spacing: -0.045em;
+    overflow-wrap: normal;
+  }
+
+  .pricing-hero .pricing-desktop-break {
+    display: none;
+  }
+
+  .pricing-hero .pricing-hero-description {
+    width: 100%;
+    max-width: none;
+    margin: 14px 0 10px;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  /* Keep the image large without changing its proportions */
+  .pricing-hero .pricing-hero-visual {
+    width: 100%;
+    max-width: none;
+    margin: 0 auto 8px;
+  }
+
+  .pricing-hero .pricing-hero-image {
+    width: 116%;
+    max-width: none;
+    height: auto;
+    margin-left: -8%;
+    object-fit: contain;
+  }
+
+  /* Cards below the image */
+  .pricing-hero .pricing-hero-benefits {
+    width: 100%;
+    max-width: none;
+    margin: 4px auto 0;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  /* Button below the cards */
+  .pricing-hero .pricing-hero-cta {
+    justify-self: center;
+    margin: 18px auto 0;
+  }
+}
+
+/* Small phones */
+@media (max-width: 360px) {
+  .pricing-hero {
+    padding-top: 70px !important;
+  }
+
+  .pricing-hero .pricing-hero-content h1 {
+    font-size: 32px;
+  }
+
+  .pricing-hero .pricing-hero-image {
+    width: 110%;
+    margin-left: -5%;
+  }
+}
+
+/* Center only the PRICING eyebrow on mobile */
+@media (max-width: 520px) {
+  .pricing-hero .pricing-hero-eyebrow {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

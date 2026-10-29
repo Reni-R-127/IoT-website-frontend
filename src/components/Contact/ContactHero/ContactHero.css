@@ -1,0 +1,473 @@
+/* ========================================
+   CONTACT HERO — BASE
+======================================== */
+
+.contact-hero {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 0;
+  padding: 120px 0 45px;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 48% 48%,
+      rgba(226, 220, 255, 0.48),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 76% 34%,
+      rgba(218, 240, 255, 0.62),
+      transparent 32%
+    ),
+    linear-gradient(
+      110deg,
+      #f7fbff 0%,
+      #f8f5ff 53%,
+      #fffaf2 100%
+    );
+}
+
+.contact-hero *,
+.contact-hero *::before,
+.contact-hero *::after {
+  box-sizing: border-box;
+}
+
+/* ========================================
+   BACKGROUND DECORATIONS
+======================================== */
+
+.contact-hero-decoration {
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.contact-decoration-purple {
+  top: -105px;
+  left: -60px;
+  width: 245px;
+  height: 245px;
+  background: rgba(158, 133, 255, 0.16);
+}
+
+.contact-decoration-cyan {
+  top: 130px;
+  left: -115px;
+  width: 235px;
+  height: 235px;
+  background: rgba(74, 218, 239, 0.13);
+}
+
+.contact-decoration-yellow {
+  bottom: -155px;
+  left: -65px;
+  width: 255px;
+  height: 255px;
+  background: rgba(255, 213, 79, 0.18);
+}
+
+/* ========================================
+   MAIN CONTAINER
+======================================== */
+
+.contact-hero-container {
+  display: grid;
+  grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.04fr);
+  align-items: center;
+  gap: clamp(20px, 3vw, 45px);
+  width: min(1440px, calc(100% - 80px));
+  margin: 0 auto;
+}
+
+.contact-hero-content {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+  opacity: 0;
+  transform: translateY(22px);
+}
+
+.contact-hero-visible .contact-hero-content {
+  animation: contactContentReveal 0.8s ease-out forwards;
+}
+
+/* ========================================
+   EYEBROW — MATCHES "WHAT WE TEACH"
+======================================== */
+
+.contact-hero-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  gap: 18px;
+  margin: 0 0 14px;
+  color: #1679d7;
+  font-size: 19px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.contact-hero-eyebrow-text {
+  display: inline-block;
+  flex: 0 0 auto;
+}
+
+.contact-hero-eyebrow-line {
+  display: block;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 2px;
+  border-radius: 10px;
+  background: #a9cdec;
+}
+
+/* ========================================
+   MAIN HEADING — MATCHES REFERENCE
+======================================== */
+
+.contact-hero-content h1 {
+  max-width: 720px;
+  margin: 0;
+  color: #09245c;
+  font-size: clamp(38px, 4vw, 57px);
+  font-weight: 900;
+  line-height: 1.04;
+  letter-spacing: -0.045em;
+  overflow-wrap: break-word;
+}
+
+.contact-hero-content h1 span {
+  display: block;
+  color: #1599df;
+  font-weight: 900;
+}
+
+/* ========================================
+   DESCRIPTION
+======================================== */
+
+.contact-hero-description {
+  max-width: 570px;
+  margin: 22px 0 0;
+  color: #687892;
+  font-size: clamp(18px, 1.5vw, 22px);
+  font-weight: 500;
+  line-height: 1.7;
+  overflow-wrap: break-word;
+}
+
+.contact-hero-desktop-break {
+  display: initial;
+}
+
+/* ========================================
+   HERO IMAGE
+======================================== */
+
+.contact-hero-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  width: 100%;
+  opacity: 0;
+  transform: translateX(25px);
+}
+
+.contact-hero-visible .contact-hero-visual {
+  animation: contactVisualReveal 0.9s ease-out 0.15s forwards;
+}
+
+.contact-hero-image-glow {
+  position: absolute;
+  z-index: -1;
+  inset: 10% 5%;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      ellipse at 35% 45%,
+      rgba(82, 187, 255, 0.22),
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse at 72% 40%,
+      rgba(181, 131, 255, 0.2),
+      transparent 62%
+    );
+  filter: blur(30px);
+  pointer-events: none;
+}
+
+.contact-hero-image {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 20px rgba(60, 85, 145, 0.08));
+  animation: contactImageFloat 5s ease-in-out 1s infinite;
+}
+
+/* ========================================
+   ANIMATIONS
+======================================== */
+
+@keyframes contactContentReveal {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes contactVisualReveal {
+  from {
+    opacity: 0;
+    transform: translateX(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes contactImageFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* ========================================
+   LAPTOP
+======================================== */
+
+@media (max-width: 1150px) {
+  .contact-hero {
+    padding: 115px 0 35px;
+  }
+
+  .contact-hero-container {
+    width: calc(100% - 56px);
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 20px;
+  }
+
+  .contact-hero-content h1 {
+    font-size: clamp(38px, 4vw, 52px);
+  }
+
+  .contact-hero-description {
+    font-size: 19px;
+  }
+
+  .contact-hero-image {
+    max-width: 680px;
+  }
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 800px) {
+  .contact-hero {
+    padding: 110px 0 30px;
+  }
+
+  .contact-hero-container {
+    width: min(700px, calc(100% - 40px));
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .contact-hero-content {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .contact-hero-eyebrow {
+    justify-content: center;
+    margin-bottom: 14px;
+    font-size: 19px;
+  }
+
+  .contact-hero-content h1 {
+    max-width: 680px;
+    margin: 0 auto;
+    font-size: clamp(38px, 5.6vw, 50px);
+    line-height: 1.04;
+  }
+
+  .contact-hero-description {
+    max-width: 600px;
+    margin: 17px auto 0;
+    font-size: 19px;
+    line-height: 1.65;
+  }
+
+  .contact-hero-desktop-break {
+    display: none;
+  }
+
+  .contact-hero-visual {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .contact-hero-image {
+    width: 100%;
+    max-width: 680px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 520px) {
+  .contact-hero {
+    padding: 105px 0 24px;
+  }
+
+  .contact-hero-container {
+    width: calc(100% - 32px);
+    gap: 14px;
+  }
+
+  .contact-hero-content {
+    padding: 0;
+    text-align: center;
+  }
+
+  .contact-hero-eyebrow {
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-size: 16px;
+    letter-spacing: 0.16em;
+  }
+
+  .contact-hero-eyebrow-line {
+    flex-basis: 32px;
+    width: 32px;
+  }
+
+  .contact-hero-content h1 {
+    font-size: clamp(34px, 8vw, 42px);
+    line-height: 1.06;
+    letter-spacing: -0.04em;
+  }
+
+  .contact-hero-content h1 span {
+    margin-top: 3px;
+  }
+
+  .contact-hero-description {
+    max-width: 480px;
+    margin: 16px auto 0;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  .contact-hero-visual {
+    margin-top: 2px;
+  }
+
+  .contact-hero-image {
+    width: 100%;
+    max-width: 480px;
+  }
+
+  .contact-hero-image-glow {
+    filter: blur(20px);
+  }
+
+  .contact-decoration-purple {
+    top: -90px;
+    left: -90px;
+    width: 165px;
+    height: 165px;
+  }
+
+  .contact-decoration-cyan {
+    top: 155px;
+    left: -125px;
+    width: 180px;
+    height: 180px;
+  }
+
+  .contact-decoration-yellow {
+    width: 175px;
+    height: 175px;
+    bottom: -115px;
+    left: -75px;
+  }
+}
+
+/* ========================================
+   SMALL PHONES
+======================================== */
+
+@media (max-width: 360px) {
+  .contact-hero {
+    padding-top: 100px;
+  }
+
+  .contact-hero-container {
+    width: calc(100% - 24px);
+  }
+
+  .contact-hero-eyebrow {
+    font-size: 14px;
+    gap: 8px;
+    letter-spacing: 0.14em;
+  }
+
+  .contact-hero-eyebrow-line {
+    flex-basis: 26px;
+    width: 26px;
+  }
+
+  .contact-hero-content h1 {
+    font-size: 32px;
+  }
+
+  .contact-hero-description {
+    font-size: 16px;
+  }
+}
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-hero-content,
+  .contact-hero-visual,
+  .contact-hero-image {
+    opacity: 1;
+    transform: none;
+    animation: none !important;
+  }
+}

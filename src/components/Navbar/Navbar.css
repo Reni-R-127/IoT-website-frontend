@@ -1,0 +1,824 @@
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  width: 100%;
+
+  z-index: 1000;
+
+  padding: 8px 0;
+
+  background: transparent;
+
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
+}
+
+
+/* =========================================================
+   NAVBAR SHOW / HIDE
+========================================================= */
+
+.navbar-visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.navbar-hidden {
+  transform: translateY(-120%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   NAVBAR INNER
+========================================================= */
+
+.navbar-inner {
+  position: relative;
+
+  width: min(1560px, calc(100% - 32px));
+
+  min-height: 76px;
+
+  margin: 0 auto;
+
+  padding: 0 24px;
+
+  display: flex;
+  align-items: center;
+
+  background: rgba(255, 255, 255, 0.97);
+
+  border: 1px solid rgba(226, 235, 247, 0.9);
+
+  border-radius: 22px;
+
+  box-shadow:
+    0 10px 30px rgba(55, 100, 160, 0.1),
+    0 2px 8px rgba(55, 100, 160, 0.05);
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+
+/* =========================================================
+   DECORATIVE CIRCLES
+========================================================= */
+
+/* =========================================================
+   NAVBAR DECORATION
+   Hidden to keep navbar clean
+========================================================= */
+
+.navbar-inner::before,
+.navbar-inner::after {
+  display: none;
+  content: none;
+}
+
+/* .navbar-inner::before {
+  content: "";
+
+  position: absolute;
+
+  left: -35px;
+  top: -48px;
+
+  width: 105px;
+  height: 105px;
+
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    rgba(44, 194, 238, 0.55),
+    rgba(121, 114, 255, 0.3)
+  );
+
+  pointer-events: none;
+}
+
+.navbar-inner::after {
+  content: "";
+
+  position: absolute;
+
+  right: -35px;
+  bottom: -48px;
+
+  width: 105px;
+  height: 105px;
+
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    rgba(154, 121, 255, 0.3),
+    rgba(67, 206, 236, 0.4)
+  );
+
+  pointer-events: none;
+} */
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.brand {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  flex-shrink: 0;
+
+  color: #0c1838;
+
+  text-decoration: none;
+}
+
+.brand-logo {
+  width: 49px;
+  height: 49px;
+
+  object-fit: contain;
+
+  display: block;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  transition: transform 0.25s ease;
+}
+
+.brand:hover .brand-logo {
+  transform: scale(1.04);
+}
+
+
+/* =========================================================
+   BRAND TEXT
+========================================================= */
+
+.brand > span {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+.brand strong {
+  display: block;
+
+  color: #0c1838;
+
+  font-size: 22px;
+  line-height: 1.05;
+
+  font-weight: 900;
+
+  letter-spacing: -0.3px;
+
+  white-space: nowrap;
+}
+
+.brand small {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #687994;
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  letter-spacing: 1px;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.nav-links {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+
+  margin-left: auto;
+
+  gap: 2px;
+}
+
+
+/* =========================================================
+   NAV LINKS
+========================================================= */
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 39px;
+
+  padding: 9px 9px;
+
+  color: #263653;
+
+  background: transparent;
+
+  border-radius: 9px;
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #2f80ed;
+
+  background: #eaf4ff;
+
+  transform: translateY(-1px);
+}
+
+.nav-link.active {
+  color: #2f80ed;
+
+  background: #e1f0ff;
+
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.nav-links::after {
+  content: "";
+
+  width: 1px;
+  height: 32px;
+
+  margin: 0 6px;
+
+  background: #e1e8f2;
+}
+
+
+/* =========================================================
+   ENROLL BUTTON
+========================================================= */
+
+.nav-enroll {
+  position: relative;
+  z-index: 3;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  min-width: 140px;
+
+  padding: 12px 15px;
+
+  border-radius: 14px;
+
+  color: #0c1838;
+
+  background: #ffd633;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: 900;
+
+  white-space: nowrap;
+
+  box-shadow:
+    0 7px 16px rgba(255, 214, 51, 0.25);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.nav-enroll:hover {
+  color: #0c1838;
+
+  background: #ffcf20;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 25px rgba(255, 207, 32, 0.35);
+}
+
+.nav-enroll svg {
+  width: 17px;
+  height: 17px;
+
+  flex-shrink: 0;
+
+  stroke-width: 2.4;
+}
+
+
+/* =========================================================
+   MENU BUTTON
+========================================================= */
+
+.menu-button {
+  position: relative;
+  z-index: 10;
+
+  display: none;
+
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-left: auto;
+
+  padding: 0;
+
+  border: 0;
+
+  border-radius: 11px;
+
+  color: #0c1838;
+
+  background: #eaf4ff;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.menu-button:hover {
+  background: #e1f0ff;
+
+  transform: scale(1.03);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  .navbar-inner {
+    width: calc(100% - 28px);
+
+    padding: 0 18px;
+  }
+
+  .brand-logo {
+    width: 46px;
+    height: 46px;
+  }
+
+  .brand strong {
+    font-size: 19px;
+  }
+
+  .brand small {
+    font-size: 11px;
+  }
+
+  .nav-link {
+    padding: 8px 7px;
+
+    font-size: 12px;
+  }
+
+  .nav-enroll {
+    min-width: 128px;
+
+    padding: 10px 12px;
+
+    font-size: 12px;
+  }
+
+  .nav-links::after {
+    margin: 0 4px;
+  }
+}
+
+
+/* =========================================================
+   SMALL TABLET / LARGE MOBILE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .navbar {
+    padding: 9px 0;
+  }
+
+  .navbar-inner {
+    width: calc(100% - 24px);
+
+    min-height: 68px;
+
+    padding: 0 15px;
+
+    border-radius: 19px;
+  }
+
+  .brand {
+    gap: 8px;
+  }
+
+  .brand-logo {
+    width: 44px;
+    height: 44px;
+  }
+
+  .brand strong {
+    font-size: 18px;
+  }
+
+  .brand small {
+    margin-top: 3px;
+
+    font-size: 10px;
+
+    letter-spacing: 0.7px;
+  }
+
+  /*
+    Hide desktop navigation.
+  */
+
+  .nav-links {
+    display: none;
+  }
+
+  /*
+    Show hamburger.
+  */
+
+  .menu-button {
+    display: flex;
+  }
+
+  /*
+    Mobile dropdown.
+  */
+
+  .nav-links.nav-open {
+    position: absolute;
+
+    top: calc(100% + 8px);
+
+    left: 0;
+    right: 0;
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 4px;
+
+    margin: 0;
+
+    padding: 10px;
+
+    background: rgba(255, 255, 255, 0.99);
+
+    border: 1px solid #e1e8f2;
+
+    border-radius: 17px;
+
+    box-shadow:
+      0 15px 35px rgba(55, 100, 160, 0.14);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+  }
+
+  .nav-links.nav-open::after {
+    display: none;
+  }
+
+  .nav-links.nav-open .nav-link {
+    width: 100%;
+
+    min-height: 43px;
+
+    justify-content: flex-start;
+
+    padding: 10px 13px;
+
+    font-size: 14px;
+
+    border-radius: 10px;
+  }
+
+  .nav-links.nav-open .nav-enroll {
+    width: 100%;
+
+    min-width: 0;
+
+    min-height: 43px;
+
+    margin-top: 5px;
+
+    padding: 11px 14px;
+
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .navbar {
+    top: 0;
+
+    padding: 7px 0;
+  }
+
+  .navbar-inner {
+    width: calc(100% - 16px);
+
+    min-height: 61px;
+
+    padding: 0 11px;
+
+    border-radius: 16px;
+
+    /*
+      IMPORTANT:
+      Do not hide the dropdown.
+    */
+    overflow: visible;
+  }
+
+  /*
+    Keep decorative circles behind content.
+  */
+
+  .navbar-inner::before {
+    left: -40px;
+    top: -55px;
+
+    width: 95px;
+    height: 95px;
+  }
+
+  .navbar-inner::after {
+    right: -38px;
+    bottom: -55px;
+
+    width: 95px;
+    height: 95px;
+  }
+
+  /* =====================================================
+     BRAND
+  ===================================================== */
+
+  .brand {
+    gap: 7px;
+
+    max-width: calc(100% - 52px);
+  }
+
+  .brand-logo {
+    width: 42px;
+    height: 42px;
+  }
+
+  .brand > span {
+    min-width: 0;
+  }
+
+  .brand strong {
+    font-size: 17px;
+
+    line-height: 1;
+  }
+
+  .brand small {
+    margin-top: 3px;
+
+    font-size: 9px;
+
+    line-height: 1;
+
+    letter-spacing: 0.5px;
+  }
+
+  /* =====================================================
+     MENU
+  ===================================================== */
+
+  .menu-button {
+    width: 39px;
+    height: 39px;
+
+    margin-left: auto;
+
+    border-radius: 10px;
+  }
+
+  .menu-button svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* =====================================================
+     DROPDOWN
+  ===================================================== */
+
+  .nav-links.nav-open {
+    top: calc(100% + 7px);
+
+    left: 0;
+    right: 0;
+
+    width: 100%;
+
+    padding: 9px;
+
+    border-radius: 15px;
+  }
+
+  .nav-links.nav-open .nav-link {
+    min-height: 42px;
+
+    padding: 10px 12px;
+
+    font-size: 13px;
+  }
+
+  .nav-links.nav-open .nav-enroll {
+    min-height: 42px;
+
+    margin-top: 4px;
+
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+  .navbar {
+    padding: 6px 0;
+  }
+
+  .navbar-inner {
+    width: calc(100% - 12px);
+
+    min-height: 58px;
+
+    padding: 0 9px;
+
+    border-radius: 15px;
+  }
+
+  .brand {
+    gap: 6px;
+
+    max-width: calc(100% - 48px);
+  }
+
+  .brand-logo {
+    width: 39px;
+    height: 39px;
+  }
+
+  .brand strong {
+    font-size: 16px;
+  }
+
+  .brand small {
+    font-size: 8px;
+
+    letter-spacing: 0.35px;
+  }
+
+  .menu-button {
+    width: 37px;
+    height: 37px;
+
+    border-radius: 9px;
+  }
+
+  .menu-button svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .nav-links.nav-open {
+    top: calc(100% + 6px);
+
+    padding: 8px;
+
+    border-radius: 14px;
+  }
+
+  .nav-links.nav-open .nav-link {
+    min-height: 40px;
+
+    padding: 9px 11px;
+
+    font-size: 12.5px;
+  }
+
+  .nav-links.nav-open .nav-enroll {
+    min-height: 40px;
+
+    font-size: 12.5px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+========================================================= */
+
+@media (max-width: 340px) {
+
+  .navbar-inner {
+    width: calc(100% - 10px);
+
+    padding: 0 8px;
+  }
+
+  .brand-logo {
+    width: 36px;
+    height: 36px;
+  }
+
+  .brand strong {
+    font-size: 15px;
+  }
+
+  .brand small {
+    font-size: 7.5px;
+  }
+
+  .menu-button {
+    width: 35px;
+    height: 35px;
+  }
+}
