@@ -5,6 +5,7 @@
 import CTASection from "../../components/CTASection/CTASection.jsx";
 import "./FAQs.css";
 import FAQHero from "../../components/FAQ/FAQHero/FAQHero.jsx";
+import FAQContact from "../../components/FAQ/FAQContact/FAQContact.jsx";
 
 export default function FAQs() {
   return (
@@ -15,6 +16,7 @@ export default function FAQs() {
         text="Open a question to see a simple answer. Update these answers with your actual policies before launch."
       /> */}
       <FAQHero />
+      <FAQContact />
       <CTASection />
       {/* <main className="faqs-page">
         <SectionTitle

@@ -3,7 +3,10 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X, MessageCircle } from "lucide-react";
 
 import { siteConfig } from "../../config/site.js";
-import { trackedWhatsAppUrl, trackWhatsAppClick } from "../../utils/whatsapp.js";
+import {
+  trackedWhatsAppUrl,
+  trackWhatsAppClick,
+} from "../../utils/whatsapp.js";
 import logo from "../../assets/logo.png";
 
 import "./Navbar.css";
@@ -39,7 +42,6 @@ export default function Navbar() {
     setOpen(false);
   }, [pathname]);
 
-
   /* =========================================
      NAVBAR SHOW / HIDE ON SCROLL
   ========================================= */
@@ -72,10 +74,9 @@ export default function Navbar() {
           clearTimeout(hideTimer);
           hideTimer = null;
         }
-      }
+      } else if (currentScrollY < lastScrollY) {
 
       /* Scrolling UP */
-      else if (currentScrollY < lastScrollY) {
         setVisible(true);
 
         if (hideTimer) {
@@ -107,7 +108,6 @@ export default function Navbar() {
     };
   }, []);
 
-
   /* =========================================
      LOGO / COMPANY NAME FULL PAGE REFRESH
   ========================================= */
@@ -124,21 +124,16 @@ export default function Navbar() {
     window.location.href = "/";
   };
 
-
   return (
-    <header className={`navbar ${visible ? "navbar-visible" : "navbar-hidden"}`}>
-
+    <header
+      className={`navbar ${visible ? "navbar-visible" : "navbar-hidden"}`}
+    >
       <div className="navbar-inner">
-
         {/* =====================================
             BRAND
         ===================================== */}
 
-        <Link
-          className="brand"
-          to="/"
-          onClick={handleBrandClick}
-        >
+        <Link className="brand" to="/" onClick={handleBrandClick}>
           <img
             src={logo}
             alt={`${siteConfig.companyName} Logo`}
@@ -148,12 +143,9 @@ export default function Navbar() {
           <span>
             <strong>{siteConfig.companyName}</strong>
 
-            <small>
-              Innovate · Build · Deliver
-            </small>
+            <small>Innovate · Build · Deliver</small>
           </span>
         </Link>
-
 
         {/* =====================================
             MOBILE MENU
@@ -165,32 +157,20 @@ export default function Navbar() {
           aria-label="Toggle menu"
           aria-expanded={open}
         >
-          {open ? (
-            <X size={22} />
-          ) : (
-            <Menu size={22} />
-          )}
+          {open ? <X size={22} /> : <Menu size={22} />}
         </button>
-
 
         {/* =====================================
             NAVIGATION
         ===================================== */}
 
-        <nav
-          className={`nav-links ${
-            open ? "nav-open" : ""
-          }`}
-        >
-
+        <nav className={`nav-links ${open ? "nav-open" : ""}`}>
           {links.map(([to, label]) => (
             <NavLink
               key={to}
               to={to}
               className={({ isActive }) =>
-                isActive
-                  ? "nav-link active"
-                  : "nav-link"
+                isActive ? "nav-link active" : "nav-link"
               }
               onClick={() => setOpen(false)}
             >
@@ -198,29 +178,41 @@ export default function Navbar() {
             </NavLink>
           ))}
 
-
           {/* =================================
               ENROLL NOW
           ================================= */}
 
           <a
             className="nav-enroll"
-            href={trackedWhatsAppUrl({ source: "Navbar Enroll button", message: "Hello TechSprout Kids! I would like to know more about your courses." })}
-            onClick={() => { trackWhatsAppClick({ source: "Navbar Enroll button" }); setOpen(false); }}
+            href={trackedWhatsAppUrl({
+              source: "Navbar Enroll button",
+              message:
+                "Hello TechSprout Kids! I would like to know more about your courses.",
+            })}
+            onClick={() => {
+              trackWhatsAppClick({ source: "Navbar Enroll button" });
+              setOpen(false);
+            }}
             target="_blank"
             rel="noreferrer"
           >
             <MessageCircle size={16} />
 
-            <span>
-              Enroll Now
-            </span>
+            <span>Enroll Now</span>
           </a>
 
+          <a
+            className="nav-projenius"
+            href="https://projenius.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setOpen(false)}
+          >
+            ProJenius Website
+          </a>
+          
         </nav>
-
       </div>
-
     </header>
   );
 }

@@ -52,8 +52,13 @@
   mix-blend-mode: multiply;
   filter: contrast(1.08) saturate(1.08);
   opacity: 0.98;
-  animation: characterEntrance 1s ease both, characterFloat 4s ease-in-out 1.2s infinite;
-  transition: width 0.3s ease, top 0.3s ease, transform 0.4s ease;
+  animation:
+    characterEntrance 1s ease both,
+    characterFloat 4s ease-in-out 1.2s infinite;
+  transition:
+    width 0.3s ease,
+    top 0.3s ease,
+    transform 0.4s ease;
 }
 
 .learning-section-image-left {
@@ -133,36 +138,59 @@
 ========================================= */
 
 .learning-cards {
-  position: relative;
-  z-index: 4;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(14px, 2vw, 28px);
-  width: min(1320px, calc(100% - 70px));
-  margin: 0 auto;
+  gap: 26px;
+
+  width: 100%;
+  max-width: 1380px;
+  margin: 32px auto 0;
+  padding: 0 12px;
+
+  box-sizing: border-box;
+  align-items: stretch;
 }
 
 .learning-card {
   position: relative;
+  display: flex;
+  flex-direction: column;
+
   min-width: 0;
-  min-height: clamp(270px, 25vw, 320px);
-  padding: clamp(18px, 2vw, 24px);
+  min-height: 330px;
+
+  /* Increase space between content and border */
+  padding: 26px 26px 30px;
+
+  box-sizing: border-box;
+  border-radius: 24px;
+  border: 1px solid rgba(83, 157, 255, 0.32);
+
   overflow: hidden;
-  border: 1px solid rgba(50, 150, 230, 0.2);
-  border-radius: clamp(18px, 2vw, 24px);
-  animation: cardReveal 0.7s ease both;
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
-  will-change: transform;
+
+  box-shadow: 0 8px 24px rgba(35, 65, 110, 0.06);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-.learning-card:nth-child(1) { animation-delay: 0.25s; }
-.learning-card:nth-child(2) { animation-delay: 0.4s; }
-.learning-card:nth-child(3) { animation-delay: 0.55s; }
-.learning-card:nth-child(4) { animation-delay: 0.7s; }
+.learning-card:nth-child(1) {
+  animation-delay: 0.25s;
+}
+.learning-card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.learning-card:nth-child(3) {
+  animation-delay: 0.55s;
+}
+.learning-card:nth-child(4) {
+  animation-delay: 0.7s;
+}
 
 .learning-card:hover {
-  transform: translateY(-9px) scale(1.015);
-  box-shadow: 0 20px 40px rgba(31, 104, 180, 0.16);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px rgba(35, 65, 110, 0.12);
 }
 
 /* Card colors */
@@ -202,7 +230,9 @@
   color: #ffffff;
   font-size: clamp(15px, 1.5vw, 18px);
   font-weight: 900;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .learn-card .learning-number,
@@ -250,7 +280,9 @@
   mix-blend-mode: multiply;
   opacity: 0.96;
   filter: contrast(1.08) saturate(1.05);
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), filter 0.35s ease;
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.35s ease;
 }
 
 .learning-card:hover .learning-illustration img {
@@ -298,7 +330,9 @@
   height: clamp(38px, 3.5vw, 46px);
   border-radius: 50%;
   color: #ffffff;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .learning-card:hover .learning-arrow {
@@ -320,7 +354,9 @@
   background: #dff2ff;
   text-align: center;
   animation: ctaReveal 0.8s ease 0.9s both;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .learning-cta-title {
@@ -352,7 +388,10 @@
   text-decoration: none;
   font-size: clamp(13px, 1.2vw, 15px);
   font-weight: 800;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
 }
 
 .learning-cta-button:hover {
