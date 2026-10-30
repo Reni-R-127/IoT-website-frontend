@@ -2,48 +2,77 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import { usePublicContent } from "../../../hooks/usePublicContent.js";
-
 import CourseCard from "../../CourseCard/CourseCard.jsx";
 import SectionTitle from "../../SectionTitle/SectionTitle.jsx";
 
 import "./CoursesSection.css";
 
 export default function CoursesSection() {
+  const result = usePublicContent("courses");
+
+  const loading = result?.loading ?? false;
+
+  const courses = Array.isArray(result?.courses)
+    ? result.courses
+    : Array.isArray(result?.data)
+      ? result.data
+      : Array.isArray(result)
+        ? result
+        : [];
+
   return (
     <section className="home-section courses-section soft-bg">
+      <div className="courses-section-inner">
+        <SectionTitle
+          eyebrow="LEARN • CREATE • INNOVATE"
+          title="Explore Our Popular Courses"
+          text="Choose a course that matches your interests and build practical skills through hands-on learning."
+        />
 
-      <SectionTitle
-        eyebrow="Popular learning"
-        title="Courses built around making"
-        text="Choose a starting point based on age, interest and experience."
-      />
+        {/* Course Cards */}
+        <div className="course-grid">
+          {loading ? (
+            <div className="course-section-message">
+              <span className="course-loader" />
+              <p>Loading courses...</p>
+            </div>
+          ) : courses.length > 0 ? (
+            courses.slice(0, 6).map((course, index) => (
+              <CourseCard
+                key={course._id || course.id || course.slug || index}
+                course={{
+                  ...course,
+                  id: course.slug || course._id || course.id,
+                  title: course.title || course.name,
+                  name: course.title || course.name,
+                  ageRange: course.ageRange || course.age,
+                  age: course.ageRange || course.age,
+                  price: course.price ?? course.fee ?? "Contact us",
+                }}
+                index={index}
+              />
+            ))
+          ) : (
+            <div className="course-section-message">
+              <h3>Courses Coming Soon</h3>
+              <p>
+                New courses will be announced soon. Contact ProJenius
+                to explore upcoming learning opportunities.
+              </p>
+            </div>
+          )}
+        </div>
 
-      <div className="course-grid">
-
-        {loading ? <p>Loading courses…</p> : courses
-          .slice(0, 6)
-          .map((course, index) => (
-
-            <CourseCard
-              key={course.id}
-              course={{...course, id: course.slug || course._id, name: course.title, age: course.ageRange, price: course.price || "Contact us"}}
-              index={index}
-            />
-
-          ))}
-        {!loading && courses.length === 0 && <p className="course-empty-state">New courses will be announced soon. Contact us to discuss learning options.</p>}
-
+        {/* View All Courses */}
+        {!loading && courses.length > 0 && (
+          <div className="courses-view-all">
+            <Link to="/courses">
+              <span>Explore All Courses</span>
+              <ArrowRight size={17} />
+            </Link>
+          </div>
+        )}
       </div>
-
-      <div className="center-link">
-
-        <Link to="/courses">
-          View all courses
-          <ArrowRight size={16} />
-        </Link>
-
-      </div>
-
     </section>
   );
 }

@@ -17,13 +17,6 @@ import { usePublicContent } from "../../../hooks/usePublicContent.js";
 import { openTrackedWhatsApp } from "../../../utils/whatsapp.js";
 import Reveal from "../Reveal.jsx";
 
-import courseArduino from "../../../assets/course-arduino.png";
-import courseIot from "../../../assets/course-iot.png";
-import courseRobotics from "../../../assets/course-robotics.png";
-import courseElectronics from "../../../assets/course-electronics.png";
-import courseCoding from "../../../assets/course-coding.png";
-import courseAI from "../../../assets/course-ai.png";
-
 import "./PopularLearning.css";
 
 const icons = {
@@ -34,16 +27,6 @@ const icons = {
   code: Code2,
   brain: Cpu,
   settings: Cpu,
-};
-
-const images = {
-  iot: courseIot,
-  arduino: courseArduino,
-  robotics: courseRobotics,
-  electronics: courseElectronics,
-  coding: courseCoding,
-  ai: courseAI,
-  "iot-robotics": courseArduino,
 };
 
 const tones = {
@@ -57,15 +40,26 @@ const tones = {
 };
 
 export default function PopularLearning() {
-  const { items: apiCourses, loading, error } = usePublicContent("courses");
+  const {
+    items: apiCourses,
+    loading,
+    error,
+  } = usePublicContent("courses");
+
   const courses = apiCourses.map((item) => ({
     ...item,
     id: item.slug || item._id,
     name: item.title,
     age: item.ageRange || "Ask us",
-    icon: (item.category || "iot").toLowerCase().replace(/[^a-z]/g, "") === "robotics" ? "bot" : "wifi",
-    price: item.price || "Contact us",
+    icon:
+      (item.category || "iot")
+        .toLowerCase()
+        .replace(/[^a-z]/g, "") === "robotics"
+        ? "bot"
+        : "wifi",
+    price: item.price ?? "Contact us",
   }));
+
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
   const location = useLocation();
@@ -108,11 +102,33 @@ export default function PopularLearning() {
     return () => cancelAnimationFrame(frameId);
   }, [location.pathname, location.hash]);
 
+  function formatPrice(price) {
+    if (price === null || price === undefined || price === "") {
+      return "Contact us";
+    }
+
+    if (typeof price === "number") {
+      return `₹${price.toLocaleString("en-IN")}`;
+    }
+
+    if (
+      typeof price === "string" &&
+      price.trim() !== "" &&
+      !Number.isNaN(Number(price.trim()))
+    ) {
+      return `₹${Number(price.trim()).toLocaleString("en-IN")}`;
+    }
+
+    return price;
+  }
+
   return (
     <section
       ref={sectionRef}
       id="popular-learning"
-      className={`popular-learning${isVisible ? " popular-in-view" : ""}`}
+      className={`popular-learning${
+        isVisible ? " popular-in-view" : ""
+      }`}
       aria-labelledby="popular-learning-title"
     >
       <div className="popular-blob blob-one" aria-hidden="true" />
@@ -122,9 +138,17 @@ export default function PopularLearning() {
         <Reveal>
           <header className="popular-heading">
             <div className="popular-eyebrow">
-              <span className="popular-eyebrow-line" aria-hidden="true" />
+              <span
+                className="popular-eyebrow-line"
+                aria-hidden="true"
+              />
+
               <span>POPULAR LEARNING</span>
-              <span className="popular-eyebrow-line" aria-hidden="true" />
+
+              <span
+                className="popular-eyebrow-line"
+                aria-hidden="true"
+              />
             </div>
 
             <h2 id="popular-learning-title">
@@ -137,84 +161,142 @@ export default function PopularLearning() {
           </header>
         </Reveal>
 
-        {loading ? <p className="popular-loading">Loading courses…</p> : error ? <p className="popular-loading">Courses are temporarily unavailable. Please try again soon.</p> : courses.length === 0 ? <p className="popular-loading">New courses will be announced here soon.</p> : <div className="popular-grid">
-          {courses.slice(0, 6).map((course, index) => {
-            const Icon = icons[course.icon] || Cpu;
-            const courseImage = course.image || images[course.id] || courseArduino;
-            const courseTone = tones[course.id] || "blue";
+        {loading ? (
+          <p className="popular-loading">Loading courses…</p>
+        ) : error ? (
+          <p className="popular-loading">
+            Courses are temporarily unavailable. Please try again soon.
+          </p>
+        ) : courses.length === 0 ? (
+          <p className="popular-loading">
+            New courses will be announced here soon.
+          </p>
+        ) : (
+          <div className="popular-grid">
+            {courses.slice(0, 6).map((course, index) => {
+              const Icon = icons[course.icon] || Cpu;
 
-            return (
-              <Reveal key={course.id} delay={index * 80}>
-                <article className={`popular-card ${courseTone}`}>
-                  <div className="popular-top">
-                    <div className="popular-icon">
-                      <Icon size={25} aria-hidden="true" />
+              const courseTone =
+                tones[
+                  (course.category || "")
+                    .toLowerCase()
+                    .replace(/[^a-z]/g, "")
+                ] || "blue";
+
+              const courseImage = course.image;
+              const coursePrice = formatPrice(course.price);
+
+              return (
+                <Reveal key={course.id} delay={index * 80}>
+                  <article
+                    className={`popular-card ${courseTone}`}
+                  >
+                    <div className="popular-top">
+                      <div className="popular-icon">
+                        <Icon
+                          size={25}
+                          aria-hidden="true"
+                        />
+                      </div>
+
+                      <span>{course.level || "Beginner"}</span>
                     </div>
 
-                    <span>{course.level}</span>
-                  </div>
+                    <div className="popular-main">
+                      <div className="popular-copy">
+                        <h3>
+                          {course.name === "Electronics & Sensors"
+                            ? "Electronics Basics"
+                            : course.name}
+                        </h3>
 
-                  <div className="popular-main">
-                    <div className="popular-copy">
-                      <h3>
-                        {course.name === "Electronics & Sensors"
-                          ? "Electronics Basics"
-                          : course.name}
-                      </h3>
+                        <p>
+                          {course.description ||
+                            "Explore, learn, and build practical technology skills."}
+                        </p>
+                      </div>
 
-                      <p>{course.description}</p>
+                      {courseImage && (
+                        <div className="popular-image">
+                          <img
+                            src={courseImage}
+                            alt={course.name || "Course"}
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                      )}
                     </div>
 
-                    <div className="popular-image">
-                      <img
-                        src={courseImage}
-                        alt={course.name}
-                        loading="lazy"
-                        decoding="async"
-                      />
+                    <div className="popular-meta">
+                      <span title={course.age}>
+                        <UserRound
+                          size={17}
+                          aria-hidden="true"
+                        />
+
+                        <span>{course.age}</span>
+                      </span>
+
+                      {course.duration && (
+                        <span title={String(course.duration)}>
+                          <Clock3
+                            size={17}
+                            aria-hidden="true"
+                          />
+
+                          <span>{course.duration}</span>
+                        </span>
+                      )}
                     </div>
-                  </div>
 
-                  <div className="popular-meta">
-                    <span title={course.age}>
-                      <UserRound size={17} aria-hidden="true" />
-                      {course.age}
-                    </span>
+                    <div className="popular-price">
+                      <div className="popular-price-label">
+                        <Tag size={17} aria-hidden="true" />
+                        <span>Course Fee</span>
+                      </div>
 
-                    <span title={course.duration}>
-                      <Clock3 size={17} aria-hidden="true" />
-                      {course.duration}
-                    </span>
+                      <strong>{coursePrice}</strong>
+                    </div>
 
-                    <span title={course.price}>
-                      <Tag size={17} aria-hidden="true" />
-                      {course.price}
-                    </span>
-                  </div>
+                    <div className="popular-actions">
+                      <Link
+                        to={`/courses/${course.id}`}
+                        aria-label={`View details for ${course.name}`}
+                      >
+                        <span>View Details</span>
 
-                  <div className="popular-actions">
-                    <Link
-                      to={`/courses/${course.id}`}
-                      aria-label={`View details for ${course.name}`}
-                    >
-                      <span>View Details</span>
-                      <ArrowRight size={16} aria-hidden="true" />
-                    </Link>
+                        <ArrowRight
+                          size={16}
+                          aria-hidden="true"
+                        />
+                      </Link>
 
-                    <button
-                      type="button"
-                      onClick={() => openTrackedWhatsApp({ source: "Popular learning course card", item: course.name, message: `Hello TechSprout Kids! I am interested in the ${course.name} course.` })}
-                      aria-label={`Enquire about ${course.name} through WhatsApp`}
-                    >
-                      <MessageCircle size={17} aria-hidden="true" />
-                      <span>Enroll</span>
-                    </button>
-                  </div>
-                </article>
-              </Reveal>
-            );
-          })}
-        </div>}
+                      <button
+                        type="button"
+                        onClick={() =>
+                          openTrackedWhatsApp({
+                            source: "Popular learning course card",
+                            item: course.name,
+                            message: `Hello TechSprout Kids! I am interested in the ${course.name} course.`,
+                          })
+                        }
+                        aria-label={`Enquire about ${course.name} through WhatsApp`}
+                      >
+                        <MessageCircle
+                          size={17}
+                          aria-hidden="true"
+                        />
+
+                        <span>Enroll Now</span>
+                      </button>
+                    </div>
+                  </article>
+                </Reveal>
+              );
+            })}
+          </div>
+        )}
       </div>
     </section>
   );
