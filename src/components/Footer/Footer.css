@@ -339,6 +339,13 @@
   font-size: 13px;
 }
 
+.footer-bottom-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 18px;
+}
+
 .footer-policy {
   display: flex;
   align-items: center;
@@ -359,6 +366,68 @@
 .footer-bottom b {
   color: #66798d;
   font-weight: 400;
+}
+
+/* PROJENIUS WEBSITE LINK */
+
+.footer-main-website-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  padding: 9px 13px;
+
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #1599e8, #0875cf);
+
+  border: 1px solid rgba(77, 174, 255, 0.65);
+  border-radius: 8px;
+
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+
+  transition: all 0.25s ease;
+}
+
+.footer-main-website-button:hover {
+  background: #0875cf;
+  transform: translateY(-2px);
+  box-shadow: 0 7px 16px rgba(21, 153, 232, 0.25);
+}
+
+.footer-main-website-button svg {
+  flex-shrink: 0;
+}
+
+/* TABLET AND MOBILE */
+
+@media (max-width: 650px) {
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 12px;
+  }
+
+  .footer-bottom-right {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 14px;
+  }
+
+  .footer-policy {
+    flex-wrap: wrap;
+    gap: 9px;
+  }
+
+  .footer-main-website-button {
+    padding: 9px 12px;
+    font-size: 11px;
+  }
 }
 
 /* =========================================

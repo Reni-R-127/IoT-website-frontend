@@ -9,10 +9,14 @@ import {
   Mail,
   MapPin,
   ArrowRight,
+  ExternalLink,
 } from "lucide-react";
 
 import { siteConfig } from "../../config/site.js";
-import { trackedWhatsAppUrl, trackWhatsAppClick } from "../../utils/whatsapp.js";
+import {
+  trackedWhatsAppUrl,
+  trackWhatsAppClick,
+} from "../../utils/whatsapp.js";
 import logo from "../../assets/logo.png";
 
 import "./Footer.css";
@@ -28,10 +32,8 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-grid">
-
         {/* LEFT - BRAND */}
         <div className="footer-about">
-
           <Link to="/" className="footer-brand">
             <img
               src={logo}
@@ -52,7 +54,10 @@ export default function Footer() {
 
           <a
             className="footer-whatsapp"
-            href={trackedWhatsAppUrl({ source: "Website footer", message: "Hello TechSprout Kids! I would like to know more." })}
+            href={trackedWhatsAppUrl({
+              source: "Website footer",
+              message: "Hello TechSprout Kids! I would like to know more.",
+            })}
             onClick={() => trackWhatsAppClick({ source: "Website footer" })}
             target="_blank"
             rel="noreferrer"
@@ -137,7 +142,6 @@ export default function Footer() {
           <h4>Contact</h4>
 
           <div className="footer-links-contact">
-
             <a
               href={`tel:${siteConfig.phone}`}
               aria-label={`Call ${siteConfig.phone}`}
@@ -174,27 +178,33 @@ export default function Footer() {
                 referrerPolicy="strict-origin-when-cross-origin"
               />
             </div>
-
           </div>
         </div>
-
       </div>
 
-      {/* BOTTOM */}
+      {/* FOOTER BOTTOM */}
       <div className="footer-bottom">
+        <span>© 2026 {siteConfig.companyName}. All Rights Reserved.</span>
 
-        <span>
-          © 2026 {siteConfig.companyName}. All Rights Reserved.
-        </span>
+        <div className="footer-bottom-right">
+          <div className="footer-policy">
+            <Link to="/privacy">Privacy Policy</Link>
 
-        <span className="footer-policy">
-          <Link to="/privacy">Privacy Policy</Link>
+            <b>|</b>
 
-          <b>|</b>
+            <Link to="/terms">Terms &amp; Conditions</Link>
+          </div>
 
-          <Link to="/terms">Terms &amp; Conditions</Link>
-        </span>
-
+          <a
+            href="https://projenius.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footer-main-website-button"
+          >
+            <span>ProJenius Website</span>
+            <ExternalLink size={15} />
+          </a>
+        </div>
       </div>
     </footer>
   );

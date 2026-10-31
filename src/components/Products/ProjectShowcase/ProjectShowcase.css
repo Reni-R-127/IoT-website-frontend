@@ -1,7 +1,13 @@
 
-/* =========================================
-   PROJECT SHOWCASE
-========================================= */
+/* =====================================================
+   FILE: ProjectShowcase.css
+   PURPOSE: Responsive dynamic IoT project showcase
+   DESIGN: Existing blue theme preserved
+===================================================== */
+
+/* =====================================================
+   MAIN SECTION
+===================================================== */
 
 .project-showcase {
   width: 100%;
@@ -10,9 +16,9 @@
   overflow: visible;
 }
 
-/* =========================================
-   HEADING
-========================================= */
+/* =====================================================
+   SECTION HEADING
+===================================================== */
 
 .project-showcase .products-section-heading {
   width: 100%;
@@ -27,48 +33,52 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  color: #0b3c87;
-  font-size: 16px;
+  gap: 18px;
+  margin-bottom: 14px;
+  color: #1679d7;
+  font-size: 19px;
   font-weight: 900;
-  letter-spacing: 0.12em;
+  line-height: 1;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
 .project-showcase .section-kicker i {
   display: block;
+  flex: 0 0 42px;
   width: 42px;
   height: 2px;
-  background: #1378f6;
+  background: #a9cdec;
 }
 
 .project-showcase .products-section-heading h2 {
-  margin: 18px 0 16px;
-  color: #071e50;
-  font-size: clamp(38px, 5vw, 66px);
+  max-width: 1000px;
+  margin: 0 auto;
+  color: #09245c;
+  font-size: clamp(38px, 4vw, 57px);
   font-weight: 900;
-  line-height: 1.2;
-  letter-spacing: -0.04em;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
   overflow-wrap: break-word;
 }
 
 .project-showcase .products-section-heading h2 em {
-  color: #0876f5;
+  color: #1599df;
   font-style: normal;
+  font-weight: 900;
 }
 
-.project-showcase .products-section-heading p {
+.project-showcase .products-section-heading > p {
   max-width: 850px;
-  margin: 0 auto;
+  margin: 18px auto 0;
   color: #66758f;
   font-size: 18px;
   line-height: 1.8;
 }
 
-/* =========================================
+/* =====================================================
    CATEGORY FILTERS
-   Keep these mounted and visible.
-========================================= */
+===================================================== */
 
 .project-showcase .project-filter-row {
   position: relative;
@@ -83,8 +93,6 @@
   padding: 4px;
   box-sizing: border-box;
   overflow: visible;
-  opacity: 1;
-  visibility: visible;
 }
 
 .project-showcase .project-filter {
@@ -105,8 +113,6 @@
   line-height: 1.3;
   white-space: nowrap;
   cursor: pointer;
-  opacity: 1;
-  visibility: visible;
   transition:
     background 0.2s ease,
     color 0.2s ease,
@@ -126,7 +132,7 @@
 
 .project-showcase .project-filter.active {
   background: linear-gradient(110deg, #0878f8, #1595fa);
-  color: #fff;
+  color: #ffffff;
   box-shadow: 0 7px 18px #0878f82b;
 }
 
@@ -135,9 +141,9 @@
   outline-offset: 3px;
 }
 
-/* =========================================
+/* =====================================================
    PROJECT GRID
-========================================= */
+===================================================== */
 
 .project-showcase .project-grid {
   display: grid;
@@ -148,18 +154,20 @@
   min-width: 0;
 }
 
+/* =====================================================
+   PROJECT CARD
+===================================================== */
+
 .project-showcase .project-card {
   display: flex;
   flex-direction: column;
   min-width: 0;
   height: 100%;
   overflow: hidden;
-  border: 1px solid #fff;
+  border: 1px solid #e9f1fa;
   border-radius: 21px;
-  background: #ffffffed;
+  background: #ffffff;
   box-shadow: 0 10px 28px #204d8310;
-  opacity: 1;
-  visibility: visible;
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease;
@@ -170,9 +178,9 @@
   box-shadow: 0 16px 32px #204d831a;
 }
 
-/* =========================================
-   IMAGES
-========================================= */
+/* =====================================================
+   PROJECT IMAGE
+===================================================== */
 
 .project-showcase .project-image {
   position: relative;
@@ -182,7 +190,7 @@
   background: #e8f2fc;
 }
 
-.project-showcase .project-image img {
+.project-showcase .project-image > img {
   display: block;
   width: 100%;
   height: 100%;
@@ -191,13 +199,37 @@
   transition: transform 0.4s ease;
 }
 
-.project-showcase .project-card:hover .project-image img {
+.project-showcase .project-card:hover .project-image > img {
   transform: scale(1.04);
 }
 
-/* =========================================
-   IMAGE BADGES
-========================================= */
+/* Image fallback */
+
+.project-showcase .project-image-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  height: 100%;
+  min-height: 160px;
+  padding: 15px;
+  box-sizing: border-box;
+  color: #65748d;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  background: linear-gradient(135deg, #e8f2fc, #dceeff);
+}
+
+.project-showcase .project-image-placeholder svg {
+  color: #1384dc;
+}
+
+/* =====================================================
+   PROJECT CATEGORY BADGE
+===================================================== */
 
 .project-showcase .project-tag {
   position: absolute;
@@ -209,12 +241,14 @@
   gap: 7px;
   max-width: calc(100% - 22px);
   padding: 8px 11px;
+  overflow: hidden;
   border: 1px solid #ffffffa8;
   border-radius: 999px;
   background: #e1f9ecf2;
   color: #08754f;
   font-size: 12px;
   font-weight: 850;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
@@ -242,22 +276,22 @@
   color: #bd2942;
 }
 
-/* =========================================
-   CARD TEXT
-========================================= */
+/* =====================================================
+   PROJECT CARD CONTENT
+===================================================== */
 
 .project-showcase .project-card-copy {
   position: relative;
   display: flex;
   flex: 1;
   flex-direction: column;
-  min-height: 145px;
-  padding: 17px;
+  min-height: 165px;
+  padding: 18px;
   box-sizing: border-box;
 }
 
 .project-showcase .project-card-copy h3 {
-  margin: 0 0 9px;
+  margin: 0 0 10px;
   padding-right: 3px;
   color: #0b1c3b;
   font-size: clamp(17px, 1.35vw, 21px);
@@ -272,7 +306,43 @@
   color: #65748d;
   font-size: 14px;
   line-height: 1.65;
+  overflow-wrap: anywhere;
 }
+
+.project-showcase .project-card-copy .project-no-description {
+  color: #98a4b5;
+  font-style: italic;
+}
+
+/* =====================================================
+   TECHNOLOGY BADGES
+===================================================== */
+
+.project-showcase .project-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: auto;
+  padding: 0 32px 30px 0;
+}
+
+.project-showcase .project-technologies span {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  padding: 6px 10px;
+  border: 1px solid #dcecff;
+  border-radius: 7px;
+  background: #f0f7ff;
+  color: #175aa0;
+  font-size: 11px;
+  font-weight: 750;
+  overflow-wrap: anywhere;
+}
+
+/* =====================================================
+   PROJECT ENQUIRY BUTTON
+===================================================== */
 
 .project-showcase .project-card-copy > a {
   position: absolute;
@@ -296,21 +366,46 @@
   background: #cce8ff;
 }
 
-/* =========================================
-   EMPTY STATE
-========================================= */
-
-.project-showcase .project-empty {
-  grid-column: 1 / -1;
-  padding: 30px;
-  color: #65748d;
-  font-size: 17px;
-  text-align: center;
+.project-showcase .project-card-copy > a:focus-visible {
+  outline: 3px solid #80bdff;
+  outline-offset: 3px;
 }
 
-/* =========================================
-   CTA
-========================================= */
+/* =====================================================
+   EMPTY / LOADING / ERROR STATES
+===================================================== */
+
+.project-showcase .project-empty {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1 / -1;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 140px;
+  margin: 0;
+  padding: 30px;
+  border: 1px dashed #c8ddf3;
+  border-radius: 16px;
+  box-sizing: border-box;
+  color: #65748d;
+  background: #f8fbff;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.project-showcase .project-empty small {
+  color: #b42318;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+/* =====================================================
+   PROJECT CTA
+===================================================== */
 
 .project-showcase .project-cta {
   position: relative;
@@ -320,7 +415,7 @@
   overflow: hidden;
   margin-top: 30px;
   padding: 25px 5%;
-  border: 1px solid #fff;
+  border: 1px solid #e1efff;
   border-radius: 25px;
   background: linear-gradient(
     105deg,
@@ -376,19 +471,14 @@
   white-space: nowrap;
 }
 
-.project-showcase .project-cta-doodle {
-  position: absolute;
-  right: 4%;
-  bottom: -20px;
-  color: #75b8f7;
-  font-size: 90px;
-  line-height: 1;
-  pointer-events: none;
+.project-showcase .project-cta .products-btn:focus-visible {
+  outline: 3px solid #80bdff;
+  outline-offset: 3px;
 }
 
-/* =========================================
-   LAPTOP
-========================================= */
+/* =====================================================
+   LAPTOP - 3 COLUMNS
+===================================================== */
 
 @media (max-width: 1200px) {
   .project-showcase .project-grid {
@@ -405,25 +495,26 @@
   }
 }
 
-/* =========================================
-   TABLET
-========================================= */
+/* =====================================================
+   TABLET - 2 COLUMNS
+===================================================== */
 
 @media (max-width: 900px) {
   .project-showcase {
     padding: 48px 20px 55px;
   }
 
-  .project-showcase .products-section-heading h2 {
-    font-size: clamp(38px, 6vw, 54px);
-  }
-
-  .project-showcase .products-section-heading p {
+  .project-showcase .section-kicker {
     font-size: 17px;
+    gap: 14px;
   }
 
-  .project-showcase .project-filter-row {
-    justify-content: center;
+  .project-showcase .products-section-heading h2 {
+    font-size: clamp(36px, 5.5vw, 50px);
+  }
+
+  .project-showcase .products-section-heading > p {
+    font-size: 17px;
   }
 
   .project-showcase .project-grid {
@@ -448,15 +539,11 @@
     width: 100%;
     white-space: normal;
   }
-
-  .project-showcase .project-cta-doodle {
-    display: none;
-  }
 }
 
-/* =========================================
-   MOBILE
-========================================= */
+/* =====================================================
+   MOBILE - 2 COLUMNS
+===================================================== */
 
 @media (max-width: 650px) {
   .project-showcase {
@@ -470,27 +557,32 @@
 
   .project-showcase .section-kicker {
     gap: 9px;
+    margin-bottom: 13px;
     font-size: 12px;
+    letter-spacing: 0.14em;
   }
 
   .project-showcase .section-kicker i {
+    flex-basis: 25px;
     width: 25px;
   }
 
   .project-showcase .products-section-heading h2 {
-    margin: 15px 0;
     font-size: clamp(32px, 8vw, 43px);
-    line-height: 1.2;
+    line-height: 1.08;
+    letter-spacing: -0.04em;
   }
 
-  .project-showcase .products-section-heading p {
+  .project-showcase .products-section-heading > p {
+    margin-top: 15px;
     font-size: 15px;
     line-height: 1.7;
   }
 
-  /* Horizontally scrollable, persistent category buttons */
+  /* Horizontally scrollable category filters */
+
   .project-showcase .project-filter-row {
-    display: flex !important;
+    display: flex;
     flex-wrap: nowrap;
     justify-content: flex-start;
     gap: 10px;
@@ -524,6 +616,16 @@
     aspect-ratio: 1.15;
   }
 
+  .project-showcase .project-image-placeholder {
+    min-height: 120px;
+    font-size: 11px;
+  }
+
+  .project-showcase .project-image-placeholder svg {
+    width: 30px;
+    height: 30px;
+  }
+
   .project-showcase .project-tag {
     top: 7px;
     left: 7px;
@@ -539,7 +641,7 @@
   }
 
   .project-showcase .project-card-copy {
-    min-height: 135px;
+    min-height: 150px;
     padding: 11px;
   }
 
@@ -553,6 +655,16 @@
     padding: 0 0 28px;
     font-size: 12px;
     line-height: 1.55;
+  }
+
+  .project-showcase .project-technologies {
+    gap: 5px;
+    padding: 0 0 30px;
+  }
+
+  .project-showcase .project-technologies span {
+    padding: 5px 7px;
+    font-size: 10px;
   }
 
   .project-showcase .project-card-copy > a {
@@ -598,9 +710,9 @@
   }
 }
 
-/* =========================================
-   SMALL MOBILE
-========================================= */
+/* =====================================================
+   SMALL MOBILE - 1 COLUMN
+===================================================== */
 
 @media (max-width: 390px) {
   .project-showcase {
@@ -617,8 +729,12 @@
     aspect-ratio: 1.6;
   }
 
+  .project-showcase .project-image-placeholder {
+    min-height: 150px;
+  }
+
   .project-showcase .project-card-copy {
-    min-height: 110px;
+    min-height: 120px;
     padding: 14px;
   }
 
@@ -630,11 +746,25 @@
     padding-right: 32px;
     font-size: 14px;
   }
+
+  .project-showcase .project-technologies {
+    padding-right: 32px;
+  }
+
+  .project-showcase .section-kicker {
+    gap: 7px;
+    font-size: 11px;
+  }
+
+  .project-showcase .section-kicker i {
+    flex-basis: 20px;
+    width: 20px;
+  }
 }
 
-/* =========================================
+/* =====================================================
    REDUCED MOTION
-========================================= */
+===================================================== */
 
 @media (prefers-reduced-motion: reduce) {
   .project-showcase .project-card,
@@ -643,115 +773,9 @@
   .project-showcase .project-card-copy > a {
     transition: none;
   }
-}
 
-/*
- * ProjectShowcase heading standardization
- * Append this patch to the END of ProjectShowcase.css.
- * Only the section heading is adjusted; project filters, cards, CTA, and layout remain unchanged.
- */
-
-.project-showcase .products-section-heading {
-  text-align: center;
-}
-
-.project-showcase .products-section-heading .section-kicker {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  margin-bottom: 14px;
-  color: #1679d7;
-  font-size: 19px;
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.project-showcase .products-section-heading .section-kicker i {
-  display: block;
-  flex: 0 0 42px;
-  width: 42px;
-  height: 2px;
-  background: #a9cdec;
-}
-
-.project-showcase .products-section-heading h2 {
-  max-width: 1000px;
-  margin: 0 auto;
-  color: #09245c;
-  font-size: clamp(38px, 4vw, 57px);
-  font-weight: 900;
-  line-height: 1.04;
-  letter-spacing: -0.045em;
-  overflow-wrap: break-word;
-}
-
-.project-showcase .products-section-heading h2 em {
-  color: #1599df;
-  font-style: normal;
-  font-weight: 900;
-}
-
-.project-showcase .products-section-heading > p {
-  max-width: 850px;
-  margin: 18px auto 0;
-  color: #66758f;
-  font-size: 18px;
-  line-height: 1.8;
-}
-
-@media (max-width: 900px) {
-  .project-showcase .products-section-heading .section-kicker {
-    font-size: 17px;
-    gap: 14px;
-  }
-
-  .project-showcase .products-section-heading h2 {
-    font-size: clamp(36px, 5.5vw, 50px);
-  }
-
-  .project-showcase .products-section-heading > p {
-    font-size: 17px;
-  }
-}
-
-@media (max-width: 650px) {
-  .project-showcase .products-section-heading .section-kicker {
-    gap: 9px;
-    margin-bottom: 13px;
-    font-size: 12px;
-    letter-spacing: 0.14em;
-  }
-
-  .project-showcase .products-section-heading .section-kicker i {
-    flex-basis: 25px;
-    width: 25px;
-  }
-
-  .project-showcase .products-section-heading h2 {
-    margin: 0 auto;
-    font-size: clamp(32px, 8vw, 43px);
-    line-height: 1.08;
-    letter-spacing: -0.04em;
-  }
-
-  .project-showcase .products-section-heading > p {
-    margin-top: 15px;
-    font-size: 15px;
-    line-height: 1.7;
-  }
-}
-
-@media (max-width: 360px) {
-  .project-showcase .products-section-heading .section-kicker {
-    gap: 7px;
-    font-size: 11px;
-  }
-
-  .project-showcase .products-section-heading .section-kicker i {
-    flex-basis: 20px;
-    width: 20px;
+  .project-showcase .project-card:hover,
+  .project-showcase .project-filter:hover {
+    transform: none;
   }
 }

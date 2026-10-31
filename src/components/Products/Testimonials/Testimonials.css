@@ -416,3 +416,30 @@
     width: 20px;
   }
 }
+
+/* Testimonial image placeholder */
+
+.testimonial-image-placeholder {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 220px;
+  padding: 20px;
+  box-sizing: border-box;
+  background: #e8f2fc;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.testimonial-media {
+  overflow: hidden;
+}
+
+.testimonial-media > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

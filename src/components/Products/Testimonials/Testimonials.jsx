@@ -1,66 +1,470 @@
-import { useState } from "react";
-import { ArrowLeft, ArrowRight, Play, Quote, Star } from "lucide-react";
+/**
+ * File: website-frontend/src/components/Products/Testimonials/Testimonials.jsx
+ *
+ * Purpose:
+ * Fetch and display approved student testimonials from MongoDB.
+ *
+ * API:
+ * GET http://localhost:5000/api/testimonials
+ *
+ * Features:
+ * - Dynamic testimonials
+ * - Approved testimonial filtering
+ * - Loading, error and empty states
+ * - Image URL handling
+ * - YouTube video embedding
+ * - Previous / Next carousel navigation
+ *
+ * Dependencies:
+ * React, lucide-react, Testimonials.css
+ */
 
-import karthik from "../../../assets/Products/student-karthik.webp";
-import harini from "../../../assets/Products/student-harini.webp";
-import vignesh from "../../../assets/Products/student-vignesh.webp";
-import divya from "../../../assets/Products/student-divya.webp";
+import { useEffect, useState } from "react";
+
+import {
+  ArrowLeft,
+  ArrowRight,
+  Play,
+  Quote,
+} from "lucide-react";
 
 import "./Testimonials.css";
 
-const stories = [
-  {
-    name: "Karthik S",
-    role: "II Year ECE Student",
-    kit: "IoT Kit",
-    image: karthik,
-    quote:
-      "The IoT kit helped me understand sensors and real-time data in a very practical way. The support was amazing!",
-    duration: "02:18",
-  },
-  {
-    name: "Harini P",
-    role: "III Year ECE Student",
-    kit: "Arduino Kit",
-    image: harini,
-    quote:
-      "I built a Smart Irrigation System using the kit. The hands-on experience really boosted my confidence.",
-    duration: "01:45",
-  },
-  {
-    name: "Vignesh R",
-    role: "Engineering Student",
-    kit: "Robotics Kit",
-    image: vignesh,
-    quote:
-      "The robotics kit was super easy to use and well-structured. I could build multiple projects and even customize it.",
-    duration: "02:03",
-  },
-  {
-    name: "Divya M",
-    role: "Final Year Student",
-    kit: "Advanced IoT Kit",
-    image: divya,
-    quote:
-      "I loved how the kit made real-world projects simple. It is useful for both beginners and advanced learners!",
-    duration: "01:52",
-  },
-];
+
+// ======================================================
+// API CONFIGURATION
+// ======================================================
+
+const RAW_API_BASE_URL = String(
+  import.meta.env.VITE_API_BASE_URL ||
+    "http://localhost:5000/api"
+).trim().replace(/\/+$/, "");
+
+if (RAW_API_BASE_URL.includes(",")) {
+  throw new Error(
+    "Invalid VITE_API_BASE_URL. Configure only one backend URL."
+  );
+}
+
+const API_BASE_URL = /\/api$/i.test(RAW_API_BASE_URL)
+  ? RAW_API_BASE_URL
+  : `${RAW_API_BASE_URL}/api`;
+
+const API_ORIGIN = new URL(API_BASE_URL).origin;
+
+const API_URL = `${API_BASE_URL}/testimonials`;
+
+
+// ======================================================
+// RESPONSE HELPER
+// ======================================================
+
+function extractTestimonials(data) {
+  if (Array.isArray(data)) {
+    return data;
+  }
+
+  if (Array.isArray(data?.items)) {
+    return data.items;
+  }
+
+  if (Array.isArray(data?.testimonials)) {
+    return data.testimonials;
+  }
+
+  if (Array.isArray(data?.data)) {
+    return data.data;
+  }
+
+  throw new Error(
+    "Invalid testimonials API response."
+  );
+}
+
+
+// ======================================================
+// APPROVAL FILTER
+// ======================================================
+
+function isApproved(item) {
+  // Prefer approved field because the public
+  // backend endpoint filters using approved: true.
+
+  if (typeof item.approved === "boolean") {
+    return item.approved;
+  }
+
+  if (typeof item.published === "boolean") {
+    return item.published;
+  }
+
+  if (typeof item.isPublished === "boolean") {
+    return item.isPublished;
+  }
+
+  return true;
+}
+
+
+// ======================================================
+// IMAGE URL HELPER
+// ======================================================
+
+function getImageUrl(item) {
+  const image = String(
+    item.thumbnailUrl ||
+    item.thumbnailImage ||
+    item.thumbnail ||
+    item.image ||
+    ""
+  ).trim();
+
+  if (!image) {
+    return "";
+  }
+
+  if (
+    image.startsWith("data:image/") ||
+    image.startsWith("blob:")
+  ) {
+    return image;
+  }
+
+  try {
+    return new URL(image, `${API_ORIGIN}/`).href;
+  } catch {
+    return "";
+  }
+}
+
+
+// ======================================================
+// VIDEO URL HELPER
+// ======================================================
+
+function getVideoUrl(item) {
+  return (
+    item.videoUrl ||
+    item.videoURL ||
+    item.video ||
+    item.videoLink ||
+    ""
+  );
+}
+
+
+// ======================================================
+// YOUTUBE EMBED URL
+// ======================================================
+
+function getEmbedUrl(url) {
+  if (!url || typeof url !== "string") {
+    return "";
+  }
+
+  try {
+    const parsed = new URL(url);
+
+    const hostname = parsed.hostname.toLowerCase();
+
+    let videoId = "";
+
+    if (
+      hostname === "youtu.be" ||
+      hostname === "www.youtu.be"
+    ) {
+      videoId = parsed.pathname
+        .split("/")
+        .filter(Boolean)[0] || "";
+    }
+
+    if (
+      hostname === "youtube.com" ||
+      hostname === "www.youtube.com" ||
+      hostname === "m.youtube.com"
+    ) {
+      videoId = parsed.searchParams.get("v") || "";
+
+      if (!videoId) {
+        const parts = parsed.pathname
+          .split("/")
+          .filter(Boolean);
+
+        if (
+          ["embed", "shorts", "live"].includes(parts[0])
+        ) {
+          videoId = parts[1] || "";
+        }
+      }
+    }
+
+    if (!videoId) {
+      return "";
+    }
+
+    return (
+      `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}`
+    );
+
+  } catch {
+    return "";
+  }
+}
+
+
+// ======================================================
+// MAIN COMPONENT
+// ======================================================
 
 export default function Testimonials() {
+  const [testimonials, setTestimonials] = useState([]);
+
   const [offset, setOffset] = useState(0);
+
+  const [loading, setLoading] = useState(true);
+
+  const [error, setError] = useState("");
+
   const [activeVideo, setActiveVideo] = useState(null);
 
-  const ordered = stories.map(
-    (_, i) => stories[(i + offset + stories.length) % stories.length]
-  );
+
+  // ====================================================
+  // FETCH TESTIMONIALS FROM MONGODB
+  // ====================================================
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function fetchTestimonials() {
+      try {
+        setLoading(true);
+        setError("");
+
+        const response = await fetch(API_URL, {
+          method: "GET",
+
+          headers: {
+            Accept: "application/json",
+          },
+
+          signal: controller.signal,
+        });
+
+        const responseText = await response.text();
+
+        let data = null;
+
+        if (responseText) {
+          try {
+            data = JSON.parse(responseText);
+          } catch {
+            throw new Error(
+              "Testimonials API returned invalid JSON."
+            );
+          }
+        }
+
+        if (!response.ok) {
+          throw new Error(
+            data?.message ||
+            `Testimonials API failed with status ${response.status}.`
+          );
+        }
+
+        if (!data) {
+          throw new Error(
+            "Testimonials API returned an empty response."
+          );
+        }
+
+        const items = extractTestimonials(data);
+
+        const visibleItems = items.filter(isApproved);
+
+        if (!controller.signal.aborted) {
+          setTestimonials(visibleItems);
+          setOffset(0);
+          setActiveVideo(null);
+        }
+
+      } catch (err) {
+        if (
+          err.name !== "AbortError" &&
+          !controller.signal.aborted
+        ) {
+          console.error(
+            "Testimonials API error:",
+            err
+          );
+
+          setTestimonials([]);
+
+          setError(err.message || "Unable to load testimonials.");
+        }
+
+      } finally {
+        if (!controller.signal.aborted) {
+          setLoading(false);
+        }
+      }
+    }
+
+    fetchTestimonials();
+
+    return () => {
+      controller.abort();
+    };
+
+  }, []);
+
+
+  // ====================================================
+  // PREVIOUS TESTIMONIAL
+  // ====================================================
+
+  function showPrevious() {
+    setOffset((current) => {
+      return (
+        current - 1 + testimonials.length
+      ) % testimonials.length;
+    });
+
+    setActiveVideo(null);
+  }
+
+
+  // ====================================================
+  // NEXT TESTIMONIAL
+  // ====================================================
+
+  function showNext() {
+    setOffset((current) => {
+      return (current + 1) % testimonials.length;
+    });
+
+    setActiveVideo(null);
+  }
+
+
+  // ====================================================
+  // CAROUSEL ORDER
+  // ====================================================
+
+  const orderedTestimonials =
+    testimonials.length > 0
+      ? testimonials.map((_, index) => {
+          return testimonials[
+            (index + offset) % testimonials.length
+          ];
+        })
+      : [];
+
+
+  // ====================================================
+  // LOADING STATE
+  // ====================================================
+
+  if (loading) {
+    return (
+      <section
+        className="product-testimonials products-shell"
+        aria-live="polite"
+      >
+        <p role="status">
+          Loading student testimonials...
+        </p>
+      </section>
+    );
+  }
+
+
+  // ====================================================
+  // ERROR STATE
+  // ====================================================
+
+  if (error) {
+    return (
+      <section
+        className="product-testimonials products-shell"
+        aria-labelledby="testimonials-title"
+      >
+        <div className="products-section-heading">
+          <span className="section-kicker">
+            <i aria-hidden="true" />
+            <span>Student Testimonials</span>
+            <i aria-hidden="true" />
+          </span>
+
+          <h2 id="testimonials-title">
+            Hear From Our <em>Students</em>
+          </h2>
+        </div>
+
+        <p className="testimonial-error" role="alert">
+          Testimonials could not be loaded.
+          Please check the website backend connection.
+        </p>
+
+        {import.meta.env.DEV && (
+          <small className="testimonial-error-details">
+            {error}
+          </small>
+        )}
+      </section>
+    );
+  }
+
+
+  // ====================================================
+  // EMPTY STATE
+  // ====================================================
+
+  if (testimonials.length === 0) {
+    return (
+      <section
+        className="product-testimonials products-shell"
+        aria-labelledby="testimonials-title"
+      >
+        <div className="products-section-heading">
+          <span className="section-kicker">
+            <i aria-hidden="true" />
+            <span>Student Testimonials</span>
+            <i aria-hidden="true" />
+          </span>
+
+          <h2 id="testimonials-title">
+            Hear From Our <em>Students</em>
+          </h2>
+
+          <p>
+            Student experiences and projects shared by our learners.
+          </p>
+        </div>
+
+        <p className="testimonial-empty">
+          No approved student testimonials available yet.
+        </p>
+      </section>
+    );
+  }
+
+
+  // ====================================================
+  // MAIN UI
+  // ====================================================
 
   return (
     <section
       className="product-testimonials products-shell"
       aria-labelledby="testimonials-title"
     >
-      <div className="products-section-heading" data-animate="fade-up">
+
+      {/* SECTION HEADING */}
+
+      <div
+        className="products-section-heading"
+        data-animate="fade-up"
+      >
         <span className="section-kicker">
           <i aria-hidden="true" />
           <span>Student Testimonials</span>
@@ -72,113 +476,215 @@ export default function Testimonials() {
         </h2>
 
         <p>
-          Real experiences from school students, college innovators, and
-          aspiring engineers
-          <br className="desktop-break" /> who built amazing projects with our
-          learning kits.
+          Student experiences and projects shared by our learners.
         </p>
       </div>
 
-      <div className="testimonial-controls">
-        <button
-          type="button"
-          aria-label="Previous testimonials"
-          onClick={() =>
-            setOffset((value) => (value - 1 + stories.length) % stories.length)
-          }
-        >
-          <ArrowLeft size={20} />
-        </button>
-        <button
-          type="button"
-          aria-label="Next testimonials"
-          onClick={() => setOffset((value) => (value + 1) % stories.length)}
-        >
-          <ArrowRight size={20} />
-        </button>
-      </div>
+
+      {/* CAROUSEL CONTROLS */}
+
+      {testimonials.length > 1 && (
+        <div className="testimonial-controls">
+
+          <button
+            type="button"
+            aria-label="Previous testimonials"
+            onClick={showPrevious}
+          >
+            <ArrowLeft size={20} />
+          </button>
+
+          <button
+            type="button"
+            aria-label="Next testimonials"
+            onClick={showNext}
+          >
+            <ArrowRight size={20} />
+          </button>
+
+        </div>
+      )}
+
+
+      {/* TESTIMONIAL GRID */}
 
       <div className="testimonial-grid">
-        {ordered.map((story, index) => (
-          <article
-            className="testimonial-card"
-            key={story.name}
-            data-animate="fade-up"
-            data-delay={Math.min(index + 1, 5)}
-          >
-            <div className="testimonial-media">
-              <img
-                src={story.image}
-                alt={`${story.name} sharing a learning experience`}
-                loading="lazy"
-              />
-              <span className="testimonial-duration">{story.duration}</span>
-              <button
-                type="button"
-                className="testimonial-play"
-                aria-label={`Show video status for ${story.name}`}
-                onClick={() =>
-                  setActiveVideo(
-                    activeVideo === story.name ? null : story.name
-                  )
-                }
-              >
-                <Play size={22} fill="currentColor" />
-              </button>
-              {activeVideo === story.name && (
-                <span className="testimonial-video-note">
-                  Video link not added yet
-                </span>
-              )}
-            </div>
 
-            <div className="testimonial-body">
-              <Quote className="testimonial-quote-icon" size={22} />
-              <p>{story.quote}</p>
+        {orderedTestimonials.map((item, index) => {
+          const name =
+            item.studentName ||
+            item.name ||
+            "Student";
 
-              <div className="testimonial-person">
-                <img src={story.image} alt="" loading="lazy" />
-                <div>
-                  <strong>{story.name}</strong>
-                  <small>{story.role}</small>
-                </div>
-                <span className="testimonial-kit">{story.kit}</span>
+          const role =
+            item.role ||
+            item.year ||
+            "";
+
+          const kit =
+            item.course ||
+            item.kit ||
+            item.courseLabel ||
+            "";
+
+          const quote =
+            item.quote ||
+            item.message ||
+            "";
+
+          const duration =
+            item.duration ||
+            item.videoDuration ||
+            "";
+
+          const image = getImageUrl(item);
+
+          const videoUrl = getVideoUrl(item);
+
+          const embedUrl = getEmbedUrl(videoUrl);
+
+          const itemId =
+            item._id ||
+            item.id ||
+            `${name}-${index}`;
+
+
+          return (
+            <article
+              className="testimonial-card"
+              key={itemId}
+              data-animate="fade-up"
+              data-delay={Math.min(index + 1, 5)}
+            >
+
+              {/* TESTIMONIAL IMAGE */}
+
+              <div className="testimonial-media">
+
+                {image ? (
+                  <img
+                    src={image}
+                    alt={`${name} testimonial thumbnail`}
+                    loading="lazy"
+                    decoding="async"
+                    onError={(event) => {
+                      event.currentTarget.style.display = "none";
+                    }}
+                  />
+                ) : (
+                  <div className="testimonial-image-placeholder">
+                    No thumbnail available
+                  </div>
+                )}
+
+                {duration && (
+                  <span className="testimonial-duration">
+                    {duration}
+                  </span>
+                )}
+
+                {videoUrl && (
+                  <button
+                    type="button"
+                    className="testimonial-play"
+                    aria-label={`Play testimonial from ${name}`}
+                    onClick={() => {
+                      setActiveVideo((current) =>
+                        current === itemId
+                          ? null
+                          : itemId
+                      );
+                    }}
+                  >
+                    <Play
+                      size={22}
+                      fill="currentColor"
+                    />
+                  </button>
+                )}
+
               </div>
-            </div>
-          </article>
-        ))}
+
+
+              {/* VIDEO PLAYER */}
+
+              {activeVideo === itemId && videoUrl && (
+                <div className="testimonial-video-player">
+
+                  {embedUrl ? (
+                    <iframe
+                      src={embedUrl}
+                      title={`${name} testimonial video`}
+                      loading="lazy"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      allowFullScreen
+                    />
+                  ) : (
+                    <a
+                      href={videoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Open testimonial video
+                    </a>
+                  )}
+
+                </div>
+              )}
+
+
+              {/* TESTIMONIAL DETAILS */}
+
+              <div className="testimonial-body">
+
+                <Quote
+                  className="testimonial-quote-icon"
+                  size={22}
+                  aria-hidden="true"
+                />
+
+                {quote && (
+                  <p>{quote}</p>
+                )}
+
+                <div className="testimonial-person">
+
+                  {image && (
+                    <img
+                      src={image}
+                      alt=""
+                      loading="lazy"
+                      onError={(event) => {
+                        event.currentTarget.style.display = "none";
+                      }}
+                    />
+                  )}
+
+                  <div>
+                    <strong>{name}</strong>
+
+                    {role && (
+                      <small>{role}</small>
+                    )}
+                  </div>
+
+                  {kit && (
+                    <span className="testimonial-kit">
+                      {kit}
+                    </span>
+                  )}
+
+                </div>
+
+              </div>
+
+            </article>
+          );
+        })}
+
       </div>
 
-      <div className="testimonial-summary" data-animate="fade-up">
-        <div>
-          <span className="summary-icon teal">
-            <Star size={23} />
-          </span>
-          <strong>1000+</strong>
-          <small>Happy Learners</small>
-        </div>
-        <div>
-          <span className="summary-icon purple">
-            <Quote size={23} />
-          </span>
-          <strong>50+</strong>
-          <small>College Workshops</small>
-        </div>
-        <div>
-          <span className="summary-icon green">
-            <Play size={23} />
-          </span>
-          <strong>100+</strong>
-          <small>Projects Built</small>
-        </div>
-        <div>
-          <span className="summary-icon gold">
-            <Star size={23} />
-          </span>
-          <strong>4.8/5</strong>
-          <small>Student Satisfaction</small>
-        </div>
-      </div>
     </section>
   );
 }
